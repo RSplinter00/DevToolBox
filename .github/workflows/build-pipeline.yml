@@ -12,18 +12,26 @@ on:
 
 jobs:
   build:
+    name: Build & Test Angular App
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js 20.x
+    - name: Use Node.js
       uses: actions/setup-node@v3
       with:
         node-version: 20.x
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build
-    - run: npm run test:prod
+    - name: Install dependencies
+      run: npm ci
+    - name: Build the application
+      run: npm run build
+    - name: Run unit tests
+      run: npm run test:prod
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: artifacts
+        path: dist/dev-tool-box/browser/
 
   deploy:
     name: Deploy to S3 and CloudFront
@@ -32,18 +40,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - uses: actions/download-artifact@v3
         with:
           name: artifacts
           path: dist/dev-tool-box/browser/
-
       - uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
-
       - name: S3 Sync
         run: aws s3 sync dist/dev-tool-box/browser/ s3://${{ secrets.S3_BUCKET }}
 
