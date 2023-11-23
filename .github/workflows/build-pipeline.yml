@@ -24,3 +24,28 @@ jobs:
     - run: npm ci
     - run: npm run build
     - run: npm run test:prod
+
+  deploy:
+    name: Deploy to S3 and CloudFront
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: artifacts
+          path: dist/dev-tool-box/browser/
+
+      - uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+
+      - name: S3 Sync
+        run: aws s3 sync dist/dev-tool-box/browser/ s3://${{ secrets.S3_BUCKET }}
+
+      - name: CloudFront Cache Invalidation
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
