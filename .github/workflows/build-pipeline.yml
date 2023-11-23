@@ -31,7 +31,7 @@ jobs:
 
   upload:
     needs: build
-    runs-on: ubunto-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/upload-artifact@v3
         with:
