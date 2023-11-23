@@ -28,15 +28,10 @@ jobs:
       run: npm run lint
     - name: Run unit tests
       run: npm run test:prod
-
-  upload:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/upload-artifact@v3
-        with:
-          name: artifacts
-          path: dist/dev-tool-box/browser/
+    - uses: actions/upload-artifact@v3
+      with:
+        name: artifacts
+        path: dist/dev-tool-box/browser/
 
   deploy:
     needs:
