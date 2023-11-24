@@ -1,19 +1,22 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+import {provideNoopAnimations} from "@angular/platform-browser/animations";
 
-describe('AppComponent', () => {
+describe(AppComponent.name, () => {
   let fixture: ComponentFixture<AppComponent>;
   let app: AppComponent;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppComponent]
-    }).compileComponents()
-      .then(() => {
-        fixture = TestBed.createComponent(AppComponent);
-        app = fixture.componentInstance;
-      });
-  }))
+      imports: [AppComponent],
+      providers: [
+        provideNoopAnimations()
+      ]
+    }).compileComponents();
+    fixture = TestBed.createComponent(AppComponent);
+    fixture.autoDetectChanges();
+    app = fixture.componentInstance;
+  });
 
   it("should create the app", () => {
     expect(app).toBeTruthy();
