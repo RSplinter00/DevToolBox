@@ -11,5 +11,7 @@ import {RouterLink} from "@angular/router";
   styleUrl: './nav-list.component.scss'
 })
 export class NavListComponent {
-  navItems: { name: string, link: string }[] = [];
+  navItems: { name: string, link: string }[] = [
+    {name: "Base64 Encoder", link: "/base64-encoder"}
+  ];
 }
