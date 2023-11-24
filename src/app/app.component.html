@@ -1,5 +1,8 @@
-<app-sidenav/>
-
-<div class="content">
-  <router-outlet/>
-</div>
+<mat-sidenav-container>
+  <mat-sidenav [opened]="true" mode="side">
+    <app-nav-list></app-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

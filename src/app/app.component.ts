@@ -1,15 +1,16 @@
 import {Component} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
-import {SidenavComponent} from "./component/sidenav/sidenav.component";
 import {CommonModule} from "@angular/common";
+import {RouterOutlet} from '@angular/router';
+import {NavListComponent} from "./component/nav-list/nav-list.component";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SidenavComponent],
+  imports: [CommonModule, RouterOutlet, NavListComponent, MatSidenavModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'DevToolBox';
+  title = "Dev Toolbox";
 }

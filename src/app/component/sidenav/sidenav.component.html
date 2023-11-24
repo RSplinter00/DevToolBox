@@ -1,8 +1,0 @@
-<mat-sidenav-container cdk-scrollable>
-  <mat-sidenav mode="push"></mat-sidenav>
-  @for (item of navItems;track item.name) {
-    <mat-sidenav-content>
-      <a [routerLink]="item.link">{{ item.name }}</a>
-    </mat-sidenav-content>
-  }
-</mat-sidenav-container>

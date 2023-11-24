@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
-import {provideNoopAnimations} from "@angular/platform-browser/animations";
+import {appConfig} from "./app.config";
 
 describe(AppComponent.name, () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -9,9 +9,7 @@ describe(AppComponent.name, () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [AppComponent],
-      providers: [
-        provideNoopAnimations()
-      ]
+      providers: [appConfig.providers]
     }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);
     fixture.autoDetectChanges();
@@ -22,7 +20,22 @@ describe(AppComponent.name, () => {
     expect(app).toBeTruthy();
   });
 
-  it("should have the 'DevToolBox' title", () => {
-    expect(app.title).toEqual("DevToolBox");
+  it("should have the 'Dev Toolbox' title", () => {
+    expect(app.title).toEqual("Dev Toolbox");
+  });
+
+  it("should have a nav list", () => {
+    const sidenav = fixture.nativeElement.querySelector("mat-sidenav-container mat-sidenav");
+    const navList = sidenav.querySelector("app-nav-list");
+
+    expect(navList).toBeTruthy();
+    expect(sidenav.getAttribute("mode")).toEqual("side")
+  });
+
+  it("should have content in the sidenav", () => {
+    const sidenavContent = fixture.nativeElement.querySelector("mat-sidenav-container mat-sidenav-content");
+    const content = sidenavContent.querySelector("router-outlet");
+
+    expect(content).toBeTruthy();
   });
 });
