@@ -1,0 +1,22 @@
+:host {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+p {
+  font-size: large;
+}
+
+#redirects-container {
+  display: flex;
+  column-gap: 1rem;
+  justify-content: space-between;
+
+  button {
+    font-weight: bold;
+    padding: 1rem 1.5rem
+  }
+}
