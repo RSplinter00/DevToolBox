@@ -97,7 +97,10 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "codeCoverageExclude": [
+              "/**/app.routes.ts"
+            ]
           }
         },
         "lint": {

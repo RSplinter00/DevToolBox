@@ -17,8 +17,18 @@ describe(NavListComponent.name, () => {
     component = fixture.componentInstance;
   });
 
-  it("should create", () => {
+  it("should create navList component", () => {
     expect(component).toBeTruthy();
+  });
+
+  it("should contain link to github page in navbar", () => {
+    const navList = fixture.nativeElement.querySelector("mat-nav-list");
+    const listItems = navList.querySelectorAll("a");
+
+    expect(listItems.length).toBeGreaterThanOrEqual(1);
+    expect(listItems[0].href).toEqual("https://github.com/RSplinter00/DevToolBox");
+    expect(listItems[0].textContent).toContain("Support on Github");
+    expect(listItems[0].querySelector("mat-icon").textContent).toEqual("star")
   });
 
   it("should display nav items", () => {
@@ -31,20 +41,10 @@ describe(NavListComponent.name, () => {
 
     const navList = fixture.nativeElement.querySelector("mat-nav-list");
     const listItems = navList.querySelectorAll("a");
-    expect(listItems).toHaveSize(mockNavItems.length);
+    expect(listItems).toHaveSize(mockNavItems.length + 1);
     mockNavItems.forEach((item, idx) => {
-      expect(listItems[idx].textContent).toEqual(item.name);
-      expect(listItems[idx].getAttribute("href")).toEqual(item.link);
+      expect(listItems[idx + 1].textContent).toEqual(item.name);
+      expect(listItems[idx + 1].getAttribute("href")).toEqual(item.link);
     });
   });
-
-  it("should contain link to github page in navbar", () => {
-    const navList = fixture.nativeElement.querySelector("mat-nav-list");
-    const listItems = navList.querySelectorAll("a");
-
-    expect(listItems.length).toBeGreaterThanOrEqual(1);
-    expect(listItems[0].href).toEqual("https://github.com/RSplinter00/DevToolBox");
-    expect(listItems[0].textContent).toContain("Support on Github");
-    expect(listItems[0].querySelector("mat-icon").textContent).toEqual("star")
-  })
 });
