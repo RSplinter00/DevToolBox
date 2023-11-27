@@ -1,4 +1,9 @@
 <mat-nav-list>
+  <a href="https://github.com/RSplinter00/DevToolBox" mat-list-item>
+    <mat-icon matListItemIcon>star</mat-icon>
+    Support on Github
+  </a>
+
   @for (item of navItems;track item.name) {
     <a mat-list-item [routerLink]="item.link">{{ item.name }}</a>
   }
