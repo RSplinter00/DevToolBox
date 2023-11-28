@@ -30,5 +30,10 @@ describe(HomeComponent.name, () => {
     const description = fixture.nativeElement.querySelector("#description");
     expect(description.textContent).toContain("A one-in-all website for all your common development tools.");
     expect(description.textContent).toContain("Check out all of our tools!")
-  })
+  });
+
+  it("should display a footer", () => {
+    const footer = fixture.nativeElement.querySelector("app-footer");
+    expect(footer).toBeTruthy();
+  });
 });

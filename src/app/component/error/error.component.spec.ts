@@ -35,4 +35,9 @@ describe(ErrorComponent.name, () => {
     expect(buttons[1].textContent).toEqual("Tools");
     expect(buttons[1].getAttribute("routerlink")).toEqual("/base64-encoder");
   });
+
+  it("should display a footer", () => {
+    const footer = fixture.nativeElement.querySelector("app-footer");
+    expect(footer).toBeTruthy();
+  });
 });
