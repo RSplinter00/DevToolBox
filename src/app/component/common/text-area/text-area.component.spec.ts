@@ -49,4 +49,14 @@ describe(TextAreaComponent.name, () => {
       expect(component.inputChanged.emit).toHaveBeenCalledWith(parameter.expectedValue);
     });
   });
+
+  it("should clear the input on clear button pressed", () => {
+    spyOn(component.inputChanged, "emit");
+    component.input.setValue("Value");
+    const button = fixture.nativeElement.querySelector(".container .header button");
+    button.click();
+    const textarea = fixture.nativeElement.querySelector(".container .content textarea");
+    expect(textarea.textContent).toEqual("");
+    expect(component.inputChanged.emit).toHaveBeenCalledWith("");
+  });
 });

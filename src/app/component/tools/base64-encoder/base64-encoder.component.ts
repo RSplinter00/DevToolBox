@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {TextAreaComponent} from "../../common/text-area/text-area.component";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {ReadonlyTextAreaComponent} from "../../common/readonly-text-area/readonly-text-area.component";
+import {EncodingService} from "../../../service/encoding.service";
 
 @Component({
   selector: 'app-base64-encoder',
@@ -14,7 +15,10 @@ import {ReadonlyTextAreaComponent} from "../../common/readonly-text-area/readonl
 export class Base64EncoderComponent {
   output: string = "";
 
+  constructor(private encodingService: EncodingService) {
+  }
+
   encode(input: string) {
-    this.output = input;
+    this.output = this.encodingService.encode(input);
   }
 }
