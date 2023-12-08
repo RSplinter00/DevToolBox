@@ -33,7 +33,7 @@ describe(ErrorComponent.name, () => {
     expect(buttons[0].textContent).toEqual("Home");
     expect(buttons[0].getAttribute("routerlink")).toEqual("/");
     expect(buttons[1].textContent).toEqual("Tools");
-    expect(buttons[1].getAttribute("routerlink")).toEqual("/base64-encoder");
+    expect(buttons[1].getAttribute("routerlink")).toEqual("/tools/base64-encoder");
   });
 
   it("should display a footer", () => {
