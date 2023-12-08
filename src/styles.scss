@@ -15,6 +15,10 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+button {
+  font-weight: bold !important;
+}
+
 textarea {
   background-color: mat.get-theme-color($theme-app, background, card);
   color: mat.get-theme-color($theme-app, foreground, text);

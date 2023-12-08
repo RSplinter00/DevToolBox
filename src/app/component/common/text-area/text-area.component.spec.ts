@@ -4,6 +4,11 @@ import {TextAreaComponent} from './text-area.component';
 import {appConfig} from "../../../app.config";
 
 describe(TextAreaComponent.name, () => {
+  const emitInputParameters: { input: string | null, expectedValue: string }[] = [
+    {input: "value", expectedValue: "value"},
+    {input: null, expectedValue: ""}
+  ];
+
   let component: TextAreaComponent;
   let fixture: ComponentFixture<TextAreaComponent>;
 
@@ -18,7 +23,7 @@ describe(TextAreaComponent.name, () => {
     fixture.detectChanges();
   });
 
-  it("should create text are component", () => {
+  it("should create textarea component", () => {
     expect(component).toBeTruthy();
   });
 
@@ -34,5 +39,14 @@ describe(TextAreaComponent.name, () => {
     const content = fixture.nativeElement.querySelector(".container .content");
     const textarea = content.querySelector("textarea");
     expect(textarea).toBeTruthy();
+  });
+
+  emitInputParameters.forEach(parameter => {
+    it(`should emit '${parameter.expectedValue}' on input changed`, () => {
+      spyOn(component.inputChanged, "emit").and.callFake(
+        (value: string) => expect(value).toEqual(parameter.expectedValue));
+      component.input.setValue(parameter.input);
+      expect(component.inputChanged.emit).toHaveBeenCalledWith(parameter.expectedValue);
+    });
   });
 });

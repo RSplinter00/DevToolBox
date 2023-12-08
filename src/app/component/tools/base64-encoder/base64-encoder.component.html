@@ -1,7 +1,12 @@
 <mat-grid-list cols="2" rowHeight="fit">
   <mat-grid-tile>
-    <div class="input">
-      <app-text-area></app-text-area>
+    <div>
+      <app-text-area (inputChanged)="encode($event)"></app-text-area>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div>
+      <app-readonly-text-area [output]="output"></app-readonly-text-area>
     </div>
   </mat-grid-tile>
 </mat-grid-list>
