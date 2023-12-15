@@ -15,4 +15,8 @@ export class EncodingService {
   public urlEncode(value: string): string {
     return encodeURIComponent(value);
   }
+
+  public urlDecode(value: string): string {
+    return decodeURIComponent(value);
+  }
 }

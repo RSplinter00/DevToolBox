@@ -45,4 +45,11 @@ describe(EncodingService.name, () => {
       expect(result).toEqual(parameter.urlEncodedValue);
     });
   });
+
+  provideParameters.forEach((parameter: { decodedValue: string, urlEncodedValue: string }) => {
+    it(`should url decode '${parameter.urlEncodedValue}' to plain text`, () => {
+      const result: string = service.urlDecode(parameter.urlEncodedValue);
+      expect(result).toEqual(parameter.decodedValue);
+    });
+  });
 });

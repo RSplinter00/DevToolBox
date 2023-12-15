@@ -13,7 +13,7 @@ describe(ReadonlyTextAreaComponent.name, () => {
 
     fixture = TestBed.createComponent(ReadonlyTextAreaComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture.autoDetectChanges();
   });
 
   it("should create readonly textarea component", () => {
@@ -38,5 +38,14 @@ describe(ReadonlyTextAreaComponent.name, () => {
     fixture.detectChanges();
     const textarea = fixture.nativeElement.querySelector(".container .content textarea");
     expect(textarea.value).toEqual("value");
+  });
+
+  it("should copy the output on button click", () => {
+    spyOn(window.navigator.clipboard, "writeText");
+    component.output = "Value";
+    fixture.detectChanges();
+    const button = fixture.nativeElement.querySelector(".container .header button");
+    button.click();
+    expect(window.navigator.clipboard.writeText).toHaveBeenCalledWith("Value");
   });
 });

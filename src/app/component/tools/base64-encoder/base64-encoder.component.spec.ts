@@ -11,7 +11,7 @@ describe(Base64EncoderComponent.name, () => {
   let encodingService: SpyObj<EncodingService>;
 
   beforeEach(() => {
-    const encodingServiceSpy = jasmine.createSpyObj("EncodingService", ["encode", "decode", "urlEncode"]);
+    const encodingServiceSpy = jasmine.createSpyObj("EncodingService", ["encode", "decode", "urlEncode", "urlDecode"]);
     TestBed.configureTestingModule({
       imports: [Base64EncoderComponent],
       providers: [{provide: EncodingService, useValue: encodingServiceSpy}]
@@ -75,5 +75,25 @@ describe(Base64EncoderComponent.name, () => {
     const readOnlyTextArea = fixture.nativeElement.querySelector("app-readonly-text-area textarea");
     expect(encodingService.urlEncode).toHaveBeenCalledWith("https://google.com?");
     expect(readOnlyTextArea.value).toEqual("https%3A%2F%2Fgoogle.com%3F");
+  });
+
+  it("should url decode value from base64 if urlDecode is selected", () => {
+    encodingService.urlDecode.and.returnValue("https://google.com?");
+    component.selectedOption = EncodingOptions.URL_DECODE;
+    component.transform("https%3A%2F%2Fgoogle.com%3F");
+    fixture.detectChanges();
+    const readOnlyTextArea = fixture.nativeElement.querySelector("app-readonly-text-area textarea");
+    expect(encodingService.urlDecode).toHaveBeenCalledWith("https%3A%2F%2Fgoogle.com%3F");
+    expect(readOnlyTextArea.value).toEqual("https://google.com?");
+  });
+
+  it("should show an error message if encoding fails", () => {
+    encodingService.decode.and.throwError("Invalid Base64 string");
+    component.selectedOption = EncodingOptions.DECODE;
+    component.transform("https://google.com?");
+    fixture.detectChanges();
+    const readOnlyTextArea = fixture.nativeElement.querySelector("app-readonly-text-area textarea");
+    expect(encodingService.decode).toHaveBeenCalledWith("https://google.com?");
+    expect(readOnlyTextArea.value).toEqual("Invalid input: Unable to decode text");
   });
 });
