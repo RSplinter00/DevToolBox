@@ -1,7 +1,9 @@
 <mat-grid-list cols="2" rowHeight="fit">
   <mat-grid-tile>
     <div>
-      <app-text-area (inputChanged)="encode($event)"></app-text-area>
+      <app-text-area (inputChanged)="transform($event)"
+                     (optionChanged)="setOptions($event)"
+                     [options]="options"></app-text-area>
     </div>
   </mat-grid-tile>
   <mat-grid-tile>

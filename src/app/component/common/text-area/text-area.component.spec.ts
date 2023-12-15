@@ -2,6 +2,10 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TextAreaComponent} from './text-area.component';
 import {appConfig} from "../../../app.config";
+import {HarnessLoader} from "@angular/cdk/testing";
+import {TestbedHarnessEnvironment} from "@angular/cdk/testing/testbed";
+import {MatSelectHarness} from "@angular/material/select/testing";
+import {MatOptionHarness} from "@angular/material/core/testing";
 
 describe(TextAreaComponent.name, () => {
   const emitInputParameters: { input: string | null, expectedValue: string }[] = [
@@ -11,6 +15,7 @@ describe(TextAreaComponent.name, () => {
 
   let component: TextAreaComponent;
   let fixture: ComponentFixture<TextAreaComponent>;
+  let loader: HarnessLoader;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -21,6 +26,7 @@ describe(TextAreaComponent.name, () => {
     fixture = TestBed.createComponent(TextAreaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    loader = TestbedHarnessEnvironment.loader(fixture);
   });
 
   it("should create textarea component", () => {
@@ -39,6 +45,37 @@ describe(TextAreaComponent.name, () => {
     const content = fixture.nativeElement.querySelector(".container .content");
     const textarea = content.querySelector("textarea");
     expect(textarea).toBeTruthy();
+  });
+
+  it("should show a select field, if options is populated", async () => {
+    component.options = ["encode", "decode"];
+    fixture.detectChanges();
+    const select: MatSelectHarness = await loader.getHarness(MatSelectHarness);
+    await select.open();
+    const options: MatOptionHarness[] = await select.getOptions();
+    expect(options.length).toEqual(2)
+    expect(await options[0].getText()).toEqual("encode");
+    expect(await options[1].getText()).toEqual("decode");
+  });
+
+  it("should be able to select and update options", async () => {
+    spyOn(component.optionChanged, "emit").and.callFake(
+      (value: string) => expect(value).toEqual("decode"));
+    component.options = ["encode", "decode"];
+    fixture.detectChanges();
+    const select: MatSelectHarness = await loader.getHarness(MatSelectHarness);
+    await select.open();
+    const options: MatOptionHarness[] = await select.getOptions();
+
+    await options[1].click();
+    expect(await select.getValueText()).toEqual("decode");
+    expect(component.selectedOption.value).toEqual("decode");
+    expect(component.optionChanged.emit).toHaveBeenCalledWith("decode");
+  });
+
+  it("should not show a select field, if options is undefined", async () => {
+    const select: MatSelectHarness | null = await loader.getHarnessOrNull(MatSelectHarness);
+    expect(select).toBeNull();
   });
 
   emitInputParameters.forEach(parameter => {

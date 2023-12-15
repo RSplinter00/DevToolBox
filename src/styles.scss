@@ -46,3 +46,8 @@ textarea {
     -moz-border-radius: 10px;
   }
 }
+
+mat-option[aria-selected="true"] span {
+  color: mat.get-theme-color($theme-app, foreground, text) !important;
+  font-weight: bolder !important;
+}

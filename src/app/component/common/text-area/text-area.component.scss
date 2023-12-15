@@ -17,6 +17,13 @@
       font-weight: bold;
       height: 36px;
     }
+
+    mat-select {
+      color: white;
+      width: 10rem;
+      text-transform: capitalize;
+      display: flex;
+    }
   }
 
   .content {
@@ -29,7 +36,9 @@
       box-sizing: border-box;
       padding: 1rem;
     }
-
-
   }
+}
+
+mat-option {
+  text-transform: capitalize;
 }
