@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="header">
+    <span>Input:</span>
+    <button (click)="clearInput()" color="primary" mat-raised-button>Clear</button>
+
+    @if (options != undefined && options.length > 0) {
+      <mat-select [formControl]="selectedOption">
+        @for (option of options;track option) {
+          <mat-option [value]="option">{{ option }}</mat-option>
+        }
+      </mat-select>
+    }
+  </div>
+
+  <div class="content">
+    <textarea [formControl]="input"></textarea>
+  </div>
+</div>

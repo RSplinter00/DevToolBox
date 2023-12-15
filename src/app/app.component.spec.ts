@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
-import {appConfig} from "./app.config";
+import {provideNoopAnimations} from "@angular/platform-browser/animations";
+import {provideRouter} from "@angular/router";
 
 describe(AppComponent.name, () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -9,8 +10,9 @@ describe(AppComponent.name, () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [AppComponent],
-      providers: [appConfig.providers]
+      providers: [provideNoopAnimations(), provideRouter([])]
     }).compileComponents();
+
     fixture = TestBed.createComponent(AppComponent);
     fixture.autoDetectChanges();
     app = fixture.componentInstance;

@@ -12,6 +12,7 @@ describe(FooterComponent.name, () => {
       imports: [FooterComponent],
       providers: [appConfig.providers]
     }).compileComponents();
+
     fixture = TestBed.createComponent(FooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
