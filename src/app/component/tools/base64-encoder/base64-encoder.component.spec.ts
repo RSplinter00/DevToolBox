@@ -11,7 +11,7 @@ describe(Base64EncoderComponent.name, () => {
   let encodingService: SpyObj<EncodingService>;
 
   beforeEach(() => {
-    const encodingServiceSpy = jasmine.createSpyObj("EncodingService", ["encode", "decode"]);
+    const encodingServiceSpy = jasmine.createSpyObj("EncodingService", ["encode", "decode", "urlEncode"]);
     TestBed.configureTestingModule({
       imports: [Base64EncoderComponent],
       providers: [{provide: EncodingService, useValue: encodingServiceSpy}]
@@ -20,6 +20,7 @@ describe(Base64EncoderComponent.name, () => {
     fixture = TestBed.createComponent(Base64EncoderComponent);
     component = fixture.componentInstance;
     encodingService = TestBed.inject(EncodingService) as SpyObj<EncodingService>;
+    fixture.autoDetectChanges();
   });
 
   it("should create base64 encoder component", () => {
@@ -38,14 +39,12 @@ describe(Base64EncoderComponent.name, () => {
     expect(readonlyTextArea).toBeTruthy();
   });
 
-  it("should encode value to base64 if no option is selected", () => {
-    encodingService.encode.and.returnValue("VmFsdWU=");
+  it("should populate output without encoding", () => {
     component.selectedOption = "";
     component.transform("Value");
     fixture.detectChanges();
     const readOnlyTextArea = fixture.nativeElement.querySelector("app-readonly-text-area textarea");
-    expect(encodingService.encode).toHaveBeenCalledWith("Value");
-    expect(readOnlyTextArea.value).toEqual("VmFsdWU=");
+    expect(readOnlyTextArea.value).toEqual("Value");
   });
 
   it("should encode value to base64 if encode is selected", () => {
@@ -59,12 +58,22 @@ describe(Base64EncoderComponent.name, () => {
   });
 
   it("should decode value from base64 if decode is selected", () => {
-    encodingService.encode.and.returnValue("Value");
+    encodingService.decode.and.returnValue("Value");
     component.selectedOption = EncodingOptions.DECODE;
     component.transform("VmFsdWU=");
     fixture.detectChanges();
     const readOnlyTextArea = fixture.nativeElement.querySelector("app-readonly-text-area textarea");
-    expect(encodingService.encode).toHaveBeenCalledWith("VmFsdWU=");
+    expect(encodingService.decode).toHaveBeenCalledWith("VmFsdWU=");
     expect(readOnlyTextArea.value).toEqual("Value");
+  });
+
+  it("should url encode value to base64 if urlEncode is selected", () => {
+    encodingService.urlEncode.and.returnValue("https%3A%2F%2Fgoogle.com%3F");
+    component.selectedOption = EncodingOptions.URL_ENCODE;
+    component.transform("https://google.com?");
+    fixture.detectChanges();
+    const readOnlyTextArea = fixture.nativeElement.querySelector("app-readonly-text-area textarea");
+    expect(encodingService.urlEncode).toHaveBeenCalledWith("https://google.com?");
+    expect(readOnlyTextArea.value).toEqual("https%3A%2F%2Fgoogle.com%3F");
   });
 });

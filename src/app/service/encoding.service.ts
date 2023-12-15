@@ -11,4 +11,8 @@ export class EncodingService {
   public decode(value: string): string {
     return atob(value);
   }
+
+  public urlEncode(value: string): string {
+    return encodeURIComponent(value);
+  }
 }

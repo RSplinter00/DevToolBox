@@ -37,16 +37,24 @@ export class Base64EncoderComponent {
       case EncodingOptions.DECODE:
         this.decode(input);
         break;
+      case EncodingOptions.URL_ENCODE:
+        this.urlEncode(input);
+        break;
       default:
         this.output = input;
     }
   }
 
   private encode(input: string): void {
+    console.log(input)
     this.output = this.encodingService.encode(input);
   }
 
   private decode(input: string): void {
     this.output = this.encodingService.decode(input);
+  }
+
+  private urlEncode(input: string): void {
+    this.output = this.encodingService.urlEncode(input);
   }
 }
