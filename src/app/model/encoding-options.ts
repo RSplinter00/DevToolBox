@@ -1,3 +1,4 @@
 export enum EncodingOptions {
-  "ENCODE" = "encode"
+  ENCODE = "encode",
+  DECODE = "decode",
 }

@@ -1,16 +1,14 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ReadonlyTextAreaComponent} from './readonly-text-area.component';
-import {appConfig} from "../../../app.config";
 
 describe(ReadonlyTextAreaComponent.name, () => {
   let component: ReadonlyTextAreaComponent;
   let fixture: ComponentFixture<ReadonlyTextAreaComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ReadonlyTextAreaComponent],
-      providers: [appConfig.providers]
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [ReadonlyTextAreaComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ReadonlyTextAreaComponent);

@@ -3,11 +3,11 @@ import {TestBed} from '@angular/core/testing';
 import {EncodingService} from './encoding.service';
 
 describe(EncodingService.name, () => {
-  const provideParameters: { input: string, expectedOutput: string }[] = [
-    {input: "value", expectedOutput: "dmFsdWU="},
-    {input: "Test@Base64Service&WithValues$==", expectedOutput: "VGVzdEBCYXNlNjRTZXJ2aWNlJldpdGhWYWx1ZXMkPT0="},
-    {input: "", expectedOutput: ""},
-    {input: "   ", expectedOutput: "ICAg"},
+  const provideParameters: { decodedValue: string, encodedValue: string }[] = [
+    {decodedValue: "value", encodedValue: "dmFsdWU="},
+    {decodedValue: "Test@Base64Service&WithValues$==", encodedValue: "VGVzdEBCYXNlNjRTZXJ2aWNlJldpdGhWYWx1ZXMkPT0="},
+    {decodedValue: "", encodedValue: ""},
+    {decodedValue: "   ", encodedValue: "ICAg"},
   ];
 
   let service: EncodingService;
@@ -21,10 +21,17 @@ describe(EncodingService.name, () => {
     expect(service).toBeTruthy();
   });
 
-  provideParameters.forEach(parameter => {
-    it(`should encode '${parameter.input}' to base64`, () => {
-      const result = service.encode(parameter.input)
-      expect(result).toEqual(parameter.expectedOutput)
+  provideParameters.forEach((parameter: { decodedValue: string, encodedValue: string }) => {
+    it(`should encode '${parameter.decodedValue}' to base64`, () => {
+      const result: string = service.encode(parameter.decodedValue);
+      expect(result).toEqual(parameter.encodedValue);
+    });
+  });
+
+  provideParameters.forEach((parameter: { decodedValue: string, encodedValue: string }) => {
+    it(`should decode '${parameter.encodedValue}' to plain text`, () => {
+      const result: string = service.decode(parameter.encodedValue);
+      expect(result).toEqual(parameter.decodedValue);
     });
   });
 });

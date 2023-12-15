@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {NavListComponent} from './nav-list.component';
-import {appConfig} from "../../app.config";
+import {provideRouter} from "@angular/router";
 
 describe(NavListComponent.name, () => {
   let component: NavListComponent;
@@ -10,8 +10,9 @@ describe(NavListComponent.name, () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [NavListComponent],
-      providers: [appConfig.providers]
+      providers: [provideRouter([])]
     }).compileComponents();
+
     fixture = TestBed.createComponent(NavListComponent);
     fixture.autoDetectChanges();
     component = fixture.componentInstance;
@@ -28,11 +29,11 @@ describe(NavListComponent.name, () => {
     expect(listItems.length).toBeGreaterThanOrEqual(1);
     expect(listItems[0].href).toEqual("https://github.com/RSplinter00/DevToolBox");
     expect(listItems[0].textContent).toContain("Support on Github");
-    expect(listItems[0].querySelector("mat-icon").textContent).toEqual("star")
+    expect(listItems[0].querySelector("mat-icon").textContent).toEqual("star");
   });
 
   it("should display nav items", () => {
-    const mockNavItems = [
+    const mockNavItems: { name: string, link: string }[] = [
       {name: "home", link: "/home"},
       {name: "about", link: "/about"}
     ];
@@ -42,7 +43,7 @@ describe(NavListComponent.name, () => {
     const navList = fixture.nativeElement.querySelector("mat-nav-list");
     const listItems = navList.querySelectorAll("a");
     expect(listItems).toHaveSize(mockNavItems.length + 1);
-    mockNavItems.forEach((item, idx) => {
+    mockNavItems.forEach((item: { name: string, link: string }, idx: number) => {
       expect(listItems[idx + 1].textContent).toEqual(item.name);
       expect(listItems[idx + 1].getAttribute("href")).toEqual(item.link);
     });

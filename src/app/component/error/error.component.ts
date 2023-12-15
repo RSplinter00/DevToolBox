@@ -13,5 +13,4 @@ import {FooterComponent} from "../footer/footer.component";
   styleUrl: './error.component.scss'
 })
 export class ErrorComponent {
-
 }

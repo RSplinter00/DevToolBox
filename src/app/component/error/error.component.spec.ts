@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ErrorComponent} from './error.component';
-import {appConfig} from "../../app.config";
+import {provideRouter} from "@angular/router";
 
 describe(ErrorComponent.name, () => {
   let component: ErrorComponent;
@@ -10,8 +10,9 @@ describe(ErrorComponent.name, () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ErrorComponent],
-      providers: [appConfig.providers]
+      providers: [provideRouter([])]
     }).compileComponents();
+
     fixture = TestBed.createComponent(ErrorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -25,7 +26,7 @@ describe(ErrorComponent.name, () => {
     const title = fixture.nativeElement.querySelector("h1");
     const errorMessage = fixture.nativeElement.querySelector("p");
     expect(title.textContent).toEqual("404");
-    expect(errorMessage.textContent).toEqual("Unable to find the page")
+    expect(errorMessage.textContent).toEqual("Unable to find the page");
   });
 
   it("should display buttons to redirect the user", () => {

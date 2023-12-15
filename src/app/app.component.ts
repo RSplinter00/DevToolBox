@@ -12,5 +12,5 @@ import {MatSidenavModule} from "@angular/material/sidenav";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = "Dev Toolbox";
+  title: string = "Dev Toolbox";
 }

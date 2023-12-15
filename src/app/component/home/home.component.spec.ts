@@ -1,7 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {HomeComponent} from './home.component';
-import {appConfig} from "../../app.config";
 
 describe(HomeComponent.name, () => {
   let component: HomeComponent;
@@ -10,8 +9,8 @@ describe(HomeComponent.name, () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HomeComponent],
-      providers: [appConfig.providers]
     }).compileComponents();
+
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -29,7 +28,7 @@ describe(HomeComponent.name, () => {
   it("should display a description", () => {
     const description = fixture.nativeElement.querySelector("#description");
     expect(description.textContent).toContain("A one-in-all website for all your common development tools.");
-    expect(description.textContent).toContain("Check out all of our tools!")
+    expect(description.textContent).toContain("Check out all of our tools!");
   });
 
   it("should display a footer", () => {

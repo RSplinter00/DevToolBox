@@ -15,10 +15,8 @@ import {EncodingOptions} from "../../../model/encoding-options";
 })
 export class Base64EncoderComponent {
   readonly options: string[] = Object.values(EncodingOptions);
-  readonly encodingMap: { [key: string]: Function } = {
-    [EncodingOptions.ENCODE]: (input: string) => this.encode(input),
-  }
 
+  input: string = "";
   output: string = "";
   selectedOption: string = "";
 
@@ -27,13 +25,28 @@ export class Base64EncoderComponent {
 
   setOptions(selectedOption: string): void {
     this.selectedOption = selectedOption;
+    this.transform(this.input);
   }
 
   transform(input: string): void {
-    this.encodingMap[this.selectedOption || EncodingOptions.ENCODE](input);
+    this.input = input;
+    switch (this.selectedOption) {
+      case EncodingOptions.ENCODE:
+        this.encode(input);
+        break;
+      case EncodingOptions.DECODE:
+        this.decode(input);
+        break;
+      default:
+        this.output = input;
+    }
   }
 
   private encode(input: string): void {
     this.output = this.encodingService.encode(input);
+  }
+
+  private decode(input: string): void {
+    this.output = this.encodingService.decode(input);
   }
 }

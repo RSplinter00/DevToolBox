@@ -10,5 +10,4 @@ import {MatDividerModule} from "@angular/material/divider";
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
-
 }

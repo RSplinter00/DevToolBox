@@ -22,7 +22,7 @@ export class TextAreaComponent implements OnInit {
     this.input.setValue("");
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.input.valueChanges.subscribe((value: string | null) => this.inputChanged.emit(value || ""));
     this.selectedOption.valueChanges.subscribe((value: string | null) => this.optionChanged.emit(value || ""));
     if (this.options != null) {
