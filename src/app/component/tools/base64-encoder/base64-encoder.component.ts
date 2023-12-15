@@ -30,23 +30,33 @@ export class Base64EncoderComponent {
 
   transform(input: string): void {
     this.input = input;
-    switch (this.selectedOption) {
-      case EncodingOptions.ENCODE:
-        this.encode(input);
-        break;
-      case EncodingOptions.DECODE:
-        this.decode(input);
-        break;
-      default:
-        this.output = input;
+    try {
+      switch (this.selectedOption) {
+        case EncodingOptions.ENCODE:
+          this.encode(input);
+          break;
+        case EncodingOptions.DECODE:
+          this.decode(input);
+          break;
+        case EncodingOptions.URL_ENCODE:
+          this.urlEncode(input);
+          break;
+        case EncodingOptions.URL_DECODE:
+          this.urlDecode(input);
+          break;
+        default:
+          this.output = input;
+      }
+    } catch (e) {
+      this.output = `Invalid input: Unable to ${this.selectedOption} text`;
     }
   }
 
-  private encode(input: string): void {
-    this.output = this.encodingService.encode(input);
-  }
+  private encode = (input: string) => this.output = this.encodingService.encode(input);
 
-  private decode(input: string): void {
-    this.output = this.encodingService.decode(input);
-  }
+  private decode = (input: string) => this.output = this.encodingService.decode(input);
+
+  private urlEncode = (input: string) => this.output = this.encodingService.urlEncode(input);
+
+  private urlDecode = (input: string) => this.output = this.encodingService.urlDecode(input);
 }

@@ -11,4 +11,8 @@ import {MatButtonModule} from "@angular/material/button";
 })
 export class ReadonlyTextAreaComponent {
   @Input() output: string = "";
+
+  copyToClipboard(): void {
+    navigator.clipboard.writeText(this.output);
+  }
 }
