@@ -12,7 +12,7 @@ import {MatIconModule} from "@angular/material/icon";
   styleUrl: './nav-list.component.scss'
 })
 export class NavListComponent {
-  navItems: { name: string, link: string }[] = [
-    {name: "Base64 Encoder", link: "/tools/base64-encoder"}
+  navItems: { name: string, link: string, tag: string }[] = [
+    {name: "Base64 Encoder", link: "/tools/base64-encoder", tag: "base64-encoder"},
   ];
 }

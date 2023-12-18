@@ -33,9 +33,9 @@ describe(NavListComponent.name, () => {
   });
 
   it("should display nav items", () => {
-    const mockNavItems: { name: string, link: string }[] = [
-      {name: "home", link: "/home"},
-      {name: "about", link: "/about"}
+    const mockNavItems: { name: string, link: string, tag: string }[] = [
+      {name: "home", link: "/home", tag: "home"},
+      {name: "about", link: "/about", tag: "about"}
     ];
     component.navItems = mockNavItems;
     fixture.detectChanges();
