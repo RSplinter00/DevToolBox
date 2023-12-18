@@ -42,6 +42,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           start: npm run start
+          wait-on: "http://localhost:4200"
 
   deploy:
     needs: [ build, e2e ]
