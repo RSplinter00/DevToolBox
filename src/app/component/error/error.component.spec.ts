@@ -31,9 +31,9 @@ describe(ErrorComponent.name, () => {
 
   it("should display buttons to redirect the user", () => {
     const buttons = fixture.nativeElement.querySelectorAll("#redirects-container button");
-    expect(buttons[0].textContent).toEqual("Home");
+    expect(buttons[0].textContent.trim()).toEqual("Home");
     expect(buttons[0].getAttribute("routerlink")).toEqual("/");
-    expect(buttons[1].textContent).toEqual("Tools");
+    expect(buttons[1].textContent.trim()).toEqual("Tools");
     expect(buttons[1].getAttribute("routerlink")).toEqual("/tools/base64-encoder");
   });
 

@@ -1,0 +1,17 @@
+[
+  {
+    "decodedValue": "value",
+    "encodedValue": "dmFsdWU=",
+    "urlEncodedValue": "value"
+  },
+  {
+    "decodedValue": "Test@Service&With?$==",
+    "encodedValue": "VGVzdEBTZXJ2aWNlJldpdGg/JD09",
+    "urlEncodedValue": "Test%40Service%26With%3F%24%3D%3D"
+  },
+  {
+    "decodedValue": "   ",
+    "encodedValue": "ICAg",
+    "urlEncodedValue": "%20%20%20"
+  }
+]
