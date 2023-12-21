@@ -5,6 +5,6 @@
   </a>
 
   @for (item of navItems;track item.name) {
-    <a mat-list-item [routerLink]="item.link">{{ item.name }}</a>
+    <a mat-list-item [routerLink]="item.link" [attr.data-testid]="'nav-item-' + item.tag">{{ item.name }}</a>
   }
 </mat-nav-list>

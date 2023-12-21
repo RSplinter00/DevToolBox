@@ -28,16 +28,14 @@ describe(FooterComponent.name, () => {
   });
 
   it("should display a link with a Github icon", () => {
-    const links = fixture.nativeElement.querySelectorAll("#socials-container a");
-    expect(links.length).toBeGreaterThanOrEqual(1);
-    expect(links[0].href).toEqual("https://github.com/RSplinter00/DevToolBox");
-    expect(links[0].querySelector("i").classList).toContain("fa-github");
+    const githubIcon = fixture.nativeElement.querySelector("[data-testid='github-icon']");
+    expect(githubIcon.href).toEqual("https://github.com/RSplinter00/DevToolBox");
+    expect(githubIcon.querySelector("i").classList).toContain("fa-github");
   });
 
   it("should display a link with a LinkedIn icon", () => {
-    const links = fixture.nativeElement.querySelectorAll("#socials-container a");
-    expect(links.length).toBeGreaterThanOrEqual(2);
-    expect(links[1].href).toEqual("https://www.linkedin.com/in/raymond-splinter");
-    expect(links[1].querySelector("i").classList).toContain("fa-linkedin");
+    const linkedInIcon = fixture.nativeElement.querySelector("[data-testid='linkedin-icon']");
+    expect(linkedInIcon.href).toEqual("https://www.linkedin.com/in/raymond-splinter");
+    expect(linkedInIcon.querySelector("i").classList).toContain("fa-linkedin");
   });
 });

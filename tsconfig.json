@@ -23,6 +23,9 @@
       "dom"
     ]
   },
+  "include": [
+    "./node_modules/@types/jest"
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
