@@ -1,3 +1,5 @@
+import AUTWindow = Cypress.AUTWindow;
+
 describe("Base64 Encoder Page", () => {
   it("should show the Base64 Encoder page", () => {
     cy.visit("/tools/base64-encoder");
@@ -55,7 +57,7 @@ describe("Base64 Encoder Page", () => {
     cy.visit("/tools/base64-encoder");
     cy.get("[data-testid='input-textarea']").should("exist").type("Test");
     cy.get("[data-testid='copy-btn']").should("exist").click();
-    cy.window().then((win) => {
+    cy.window().then((win: AUTWindow) => {
       win.navigator.clipboard.readText().then((text: string) => expect(text).to.eq('VGVzdA=='));
     });
   });
