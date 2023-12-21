@@ -31,7 +31,7 @@ jobs:
         run: npm run lint
       - name: Run unit tests
         run: npm run test:prod
-      - name: Save build folder
+      - name: Cache application
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Download build folder
+      - name: Download application
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts
@@ -61,17 +61,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - name: Download application
+        uses: actions/download-artifact@v4
         with:
-          name: artifacts
+          name: build-artifacts
           path: dist/dev-tool-box/browser/
-      - uses: aws-actions/configure-aws-credentials@v4
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
-      - name: Sync to S3
+      - name: Deploy application to S3
         run: aws s3 sync dist/dev-tool-box/browser/ s3://${{ secrets.S3_BUCKET }}
 
-      - name: CloudFront cache invalidation
+      - name: Invalidate CloudFront cache
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
