@@ -42,6 +42,6 @@ describe(PageTitleStrategy.name, () => {
     router.resetConfig([{path: "home", title: "Home", component: HomeComponent}]);
     router.navigateByUrl("/home");
     tick();
-    expect(document.title).toBe("Home - Dev's ToolBox");
+    expect(document.title).toBe("Home | Dev's ToolBox");
   }));
 });

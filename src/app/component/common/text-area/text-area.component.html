@@ -1,6 +1,6 @@
 <div class="container">
   <div class="header">
-    <span>{{ headerText }}</span>
+    <span data-testid="header-text">{{ headerText }}</span>
     <button (click)="clearInput()" color="primary" data-testid="clear-btn" mat-raised-button>Clear</button>
 
     @if (options != undefined && options.length > 0) {
