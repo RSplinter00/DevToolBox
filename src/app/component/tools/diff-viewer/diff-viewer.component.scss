@@ -7,9 +7,12 @@ div {
   height: 100%;
 }
 
-#diff-view {
+#output-viewport {
+  height: 100%;
+  width: 100%;
+
   .diff-added {
-    color: #008000 !important;
+    color: #008000;
     background-color: rgb(0, 128, 0, 0.2);
     text-decoration: underline;
   }

@@ -1,7 +1,7 @@
 describe("Home page", () => {
   it("should load home page", () => {
     cy.visit("/");
-    cy.title().should("eq", "DevToolBox");
+    cy.title().should("eq", "Dev's ToolBox");
     cy.contains("Developer's Toolbox");
   });
 
