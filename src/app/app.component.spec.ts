@@ -22,10 +22,6 @@ describe(AppComponent.name, () => {
     expect(app).toBeTruthy();
   });
 
-  it("should have the 'Dev Toolbox' title", () => {
-    expect(app.title).toEqual("Dev Toolbox");
-  });
-
   it("should have a nav list", () => {
     const sidenav = fixture.nativeElement.querySelector("mat-sidenav-container mat-sidenav");
     const navList = sidenav.querySelector("app-nav-list");

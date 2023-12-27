@@ -14,5 +14,6 @@ import {MatIconModule} from "@angular/material/icon";
 export class NavListComponent {
   navItems: { name: string, link: string, tag: string }[] = [
     {name: "Base64 Encoder", link: "/tools/base64-encoder", tag: "base64-encoder"},
+    {name: "Diff Viewer", link: "/tools/diff-viewer", tag: "diff-viewer"},
   ];
 }

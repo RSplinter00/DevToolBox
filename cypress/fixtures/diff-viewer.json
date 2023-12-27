@@ -1,0 +1,78 @@
+[
+  {
+    "original": "HelloWorld",
+    "updated": "HelloWorld",
+    "output": [
+      {
+        "value": "HelloWorld",
+        "className": "diff-unchanged"
+      }
+    ]
+  },
+  {
+    "original": "Hello",
+    "updated": "HiHelloWorld",
+    "output": [
+      {
+        "value": "H",
+        "className": "diff-unchanged"
+      },
+      {
+        "value": "iH",
+        "className": "diff-added"
+      },
+      {
+        "value": "ello",
+        "className": "diff-unchanged"
+      },
+      {
+        "value": "World",
+        "className": "diff-added"
+      }
+    ]
+  },
+  {
+    "original": "HelloWorld",
+    "updated": "HelWor",
+    "output": [
+      {
+        "value": "Hel",
+        "className": "diff-unchanged"
+      },
+      {
+        "value": "lo",
+        "className": "diff-removed"
+      },
+      {
+        "value": "Wor",
+        "className": "diff-unchanged"
+      },
+      {
+        "value": "ld",
+        "className": "diff-removed"
+      }
+    ]
+  },
+  {
+    "original": "HelloWorld",
+    "updated": "Hello World\n \nHi",
+    "output": [
+      {
+        "value": "Hello",
+        "className": "diff-unchanged"
+      },
+      {
+        "value": "&nbsp;",
+        "className": "diff-added"
+      },
+      {
+        "value": "World",
+        "className": "diff-unchanged"
+      },
+      {
+        "value": "<br>&nbsp;<br>Hi",
+        "className": "diff-added"
+      }
+    ]
+  }
+]

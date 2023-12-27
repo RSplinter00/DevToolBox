@@ -3,6 +3,7 @@ import AUTWindow = Cypress.AUTWindow;
 describe("Base64 Encoder Page", () => {
   it("should show the Base64 Encoder page", () => {
     cy.visit("/tools/base64-encoder");
+    cy.title().should("eq", "Base64 Encoder | Dev's ToolBox");
     cy.get("app-text-area").should("exist");
     cy.get("app-readonly-text-area").should("exist");
   });

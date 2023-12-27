@@ -13,6 +13,7 @@ import {MatSelectModule} from "@angular/material/select";
 })
 export class TextAreaComponent implements OnInit {
   @Input() options!: string[] | undefined;
+  @Input() headerText: string = "Input:"
   @Output() inputChanged: EventEmitter<string> = new EventEmitter<string>();
   @Output() optionChanged: EventEmitter<string> = new EventEmitter<string>();
   input: FormControl<string | null> = new FormControl<string>("");

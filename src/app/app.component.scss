@@ -12,6 +12,7 @@ mat-sidenav-container {
   }
 
   mat-sidenav-content {
-    padding: 0 1rem;
+    padding: 1rem;
+    height: calc(100% - 2rem);
   }
 }
