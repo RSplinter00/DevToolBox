@@ -1,0 +1,23 @@
+<mat-grid-list cols="2" gutterSize="1rem" rowHeight="fit">
+  <mat-grid-tile>
+    <div>
+      <app-text-area (inputChanged)="setOriginal($event)" headerText="Original:"></app-text-area>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div>
+      <app-text-area (inputChanged)="setUpdated($event)" headerText="Updated:"></app-text-area>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <div id="diff-view">
+      <mat-card>
+        <mat-card-content>
+          @for (diff of differences; track diff.text) {
+            <span [ngClass]="diff.className" [innerHTML]="diff.text"></span>
+          }
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -12,6 +12,11 @@ export const routes: Routes = [
         path: "base64-encoder",
         loadComponent: () => import("./component/tools/base64-encoder/base64-encoder.component")
           .then(c => c.Base64EncoderComponent)
+      },
+      {
+        path: "diff-viewer",
+        loadComponent: () => import("./component/tools/diff-viewer/diff-viewer.component")
+          .then(c => c.DiffViewerComponent)
       }
     ]
   },
