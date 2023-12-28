@@ -13,7 +13,7 @@ import {CdkFixedSizeVirtualScroll, CdkVirtualScrollViewport} from "@angular/cdk/
   styleUrls: ["./json-viewer.component.scss", "../../../styles/tools-styles.scss"]
 })
 export class JsonViewerComponent implements OnChanges {
-  @Input() jsonInput: Object | string | undefined;
+  @Input() jsonInput: object | string | undefined;
   formattedJsonObject: string | undefined;
 
   copyToClipboard(): void {
@@ -23,7 +23,7 @@ export class JsonViewerComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.hasOwnProperty("jsonInput")) {
+    if (changes["jsonInput"] != null) {
       this.formattedJsonObject = this.stringifyJson(this.jsonInput == null ? "" : this.jsonInput);
     }
   }

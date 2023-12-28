@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {JsonViewerComponent} from "./json-viewer.component";
+import {SimpleChange, SimpleChanges} from "@angular/core";
 
 describe(JsonViewerComponent.name, () => {
   let component: JsonViewerComponent;
@@ -36,8 +37,12 @@ describe(JsonViewerComponent.name, () => {
     expect(textarea.getAttribute("ng-reflect-lang")).toEqual("json");
   });
 
-  it("should display the output", () => {
+  it("should display the formatted json object", () => {
     component.jsonInput = JSON.stringify({"name": "John Doe"});
+    const changes: SimpleChanges = {
+      "jsonInput": {} as SimpleChange
+    } as SimpleChanges;
+    component.ngOnChanges(changes);
     fixture.detectChanges();
     const textarea = fixture.nativeElement.querySelector("textarea");
     expect(textarea.value).toEqual('{"name":"John Doe"}');
@@ -46,6 +51,10 @@ describe(JsonViewerComponent.name, () => {
   it("should copy the output on button click", () => {
     spyOn(window.navigator.clipboard, "writeText");
     component.jsonInput = JSON.stringify({"name": "John Doe"});
+    const changes: SimpleChanges = {
+      "jsonInput": {} as SimpleChange
+    } as SimpleChanges;
+    component.ngOnChanges(changes);
     fixture.detectChanges();
     const button = fixture.nativeElement.querySelector("[data-testid='copy-btn']");
     button.click();

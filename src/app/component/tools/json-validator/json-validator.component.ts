@@ -13,7 +13,7 @@ import {JsonViewerComponent} from "../../common/json-viewer/json-viewer.componen
   styleUrls: ["./json-validator.component.scss", "../../../styles/tools-styles.scss"]
 })
 export class JsonValidatorComponent {
-  jsonObject: Object | string | undefined;
+  jsonObject: object | string | undefined;
 
   validateJson(input: string): void {
     try {
