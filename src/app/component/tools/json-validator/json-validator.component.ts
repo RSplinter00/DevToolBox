@@ -13,19 +13,13 @@ import {JsonViewerComponent} from "../../common/json-viewer/json-viewer.componen
   styleUrls: ["./json-validator.component.scss", "../../../styles/tools-styles.scss"]
 })
 export class JsonValidatorComponent {
-  formattedJson: string | undefined;
+  jsonObject: Object | string | undefined;
 
   validateJson(input: string): void {
-    if (input == "") {
-      this.formattedJson = "";
-      return;
-    }
-
     try {
-      const jsonObject = JSON.parse(input);
-      this.formattedJson = JSON.stringify(jsonObject, null, 2);
+      this.jsonObject = input != "" ? JSON.parse(input) : "";
     } catch (e) {
-      this.formattedJson = (e as SyntaxError).message;
+      this.jsonObject = (e as Error).message;
     }
   }
 }
