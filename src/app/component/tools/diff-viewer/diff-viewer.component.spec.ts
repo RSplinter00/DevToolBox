@@ -24,8 +24,8 @@ describe(DiffViewerComponent.name, () => {
     const textAreas = fixture.nativeElement.querySelectorAll("app-text-area");
     const outputField = fixture.nativeElement.querySelector("#output-viewport mat-card");
     expect(textAreas.length).toBe(2);
-    const headerOriginal = textAreas[0].querySelector(".header span");
-    const headerUpdated = textAreas[1].querySelector(".header span");
+    const headerOriginal = textAreas[0].querySelector(".section-header .section-title");
+    const headerUpdated = textAreas[1].querySelector(".section-header .section-title");
     expect(headerOriginal.textContent).toEqual("Original:");
     expect(headerUpdated.textContent).toEqual("Updated:");
     expect(outputField).toBeTruthy();

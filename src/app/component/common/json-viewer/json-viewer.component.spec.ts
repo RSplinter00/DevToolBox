@@ -21,15 +21,15 @@ describe(JsonViewerComponent.name, () => {
   });
 
   it("should display a header div", () => {
-    const header = fixture.nativeElement.querySelector(".container .header");
-    const headerText = header.querySelector("span");
+    const header = fixture.nativeElement.querySelector(".section-container .section-header");
+    const headerText = header.querySelector(".section-title");
     const copyButton = header.querySelector("[data-testid='copy-btn']");
     expect(headerText.textContent).toEqual("Output:");
     expect(copyButton).toBeTruthy();
   });
 
   it("should display a textarea to highlight json content", () => {
-    const content = fixture.nativeElement.querySelector(".container .content");
+    const content = fixture.nativeElement.querySelector(".section-content");
     const textarea = content.querySelector("mat-card mat-card-content textarea")
     expect(textarea).toBeTruthy();
     expect(textarea.getAttribute("highlight-js")).toEqual("");

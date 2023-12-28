@@ -1,12 +1,12 @@
-<mat-grid-list cols="2" gutterSize="1rem" rowHeight="fit">
+<mat-grid-list class="grid-list" cols="2" gutterSize="1rem" rowHeight="fit">
   <mat-grid-tile>
-    <div>
+    <div class="grid-tile-content">
       <app-text-area (inputChanged)="setOriginal($event)" data-testid="original-input"
                      headerText="Original:"></app-text-area>
     </div>
   </mat-grid-tile>
   <mat-grid-tile>
-    <div>
+    <div class="grid-tile-content">
       <app-text-area (inputChanged)="setUpdated($event)" data-testid="updated-input"
                      headerText="Updated:"></app-text-area>
     </div>

@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {ChangeDetectionStrategy, Component} from "@angular/core";
+import {CommonModule} from "@angular/common";
 import {TextAreaComponent} from "../../common/text-area/text-area.component";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {Change, diffChars} from "diff";
@@ -7,11 +7,11 @@ import {MatCardModule} from "@angular/material/card";
 import {CdkVirtualForOf, ScrollingModule} from "@angular/cdk/scrolling";
 
 @Component({
-  selector: 'app-diff-viewer',
+  selector: "app-diff-viewer",
   standalone: true,
   imports: [CommonModule, TextAreaComponent, MatGridListModule, MatCardModule, CdkVirtualForOf, ScrollingModule],
-  templateUrl: './diff-viewer.component.html',
-  styleUrl: './diff-viewer.component.scss',
+  templateUrl: "./diff-viewer.component.html",
+  styleUrls: ["./diff-viewer.component.scss", "../../../styles/tools-styles.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DiffViewerComponent {

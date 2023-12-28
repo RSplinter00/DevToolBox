@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import {TextAreaComponent} from './text-area.component';
+import {TextAreaComponent} from "./text-area.component";
 import {HarnessLoader} from "@angular/cdk/testing";
 import {TestbedHarnessEnvironment} from "@angular/cdk/testing/testbed";
 import {MatSelectHarness} from "@angular/material/select/testing";
@@ -34,16 +34,16 @@ describe(TextAreaComponent.name, () => {
   });
 
   it("should display a header div", () => {
-    const header = fixture.nativeElement.querySelector(".container .header");
-    const headerText = header.querySelector("span");
+    const header = fixture.nativeElement.querySelector(".section-container .section-header");
+    const headerText = header.querySelector(".section-title");
     const button = header.querySelector("button");
     expect(headerText.textContent).toEqual("Input:");
     expect(button.textContent).toEqual("Clear");
   });
 
   it("should display a textarea", () => {
-    const content = fixture.nativeElement.querySelector(".container .content");
-    const textarea = content.querySelector("textarea");
+    const content = fixture.nativeElement.querySelector(".section-container .section-content");
+    const textarea = content.querySelector(".section-textarea");
     expect(textarea).toBeTruthy();
   });
 
@@ -95,9 +95,9 @@ describe(TextAreaComponent.name, () => {
   it("should clear the input on clear button pressed", () => {
     spyOn(component.inputChanged, "emit");
     component.input.setValue("Value");
-    const button = fixture.nativeElement.querySelector(".container .header button");
+    const button = fixture.nativeElement.querySelector("[data-testid='clear-btn']");
     button.click();
-    const textarea = fixture.nativeElement.querySelector(".container .content textarea");
+    const textarea = fixture.nativeElement.querySelector(".section-textarea");
     expect(textarea.textContent).toEqual("");
     expect(component.inputChanged.emit).toHaveBeenCalledWith("");
   });

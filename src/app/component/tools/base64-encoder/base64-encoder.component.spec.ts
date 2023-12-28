@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import {Base64EncoderComponent} from './base64-encoder.component';
+import {Base64EncoderComponent} from "./base64-encoder.component";
 import {EncodingService} from "../../../service/encoding.service";
 import {EncodingOptions} from "../../../model/encoding-options";
 import SpyObj = jasmine.SpyObj;

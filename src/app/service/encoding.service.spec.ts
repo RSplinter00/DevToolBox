@@ -1,6 +1,6 @@
-import {TestBed} from '@angular/core/testing';
+import {TestBed} from "@angular/core/testing";
 
-import {EncodingService} from './encoding.service';
+import {EncodingService} from "./encoding.service";
 
 describe(EncodingService.name, () => {
   const provideParameters: { decodedValue: string, encodedValue: string, urlEncodedValue: string }[] = [

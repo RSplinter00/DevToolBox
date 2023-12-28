@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import {ErrorComponent} from './error.component';
+import {ErrorComponent} from "./error.component";
 import {provideRouter} from "@angular/router";
 
 describe(ErrorComponent.name, () => {

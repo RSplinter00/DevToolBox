@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import {ReadonlyTextAreaComponent} from './readonly-text-area.component';
+import {ReadonlyTextAreaComponent} from "./readonly-text-area.component";
 
 describe(ReadonlyTextAreaComponent.name, () => {
   let component: ReadonlyTextAreaComponent;
@@ -21,14 +21,14 @@ describe(ReadonlyTextAreaComponent.name, () => {
   });
 
   it("should display a header div", () => {
-    const header = fixture.nativeElement.querySelector(".container .header");
-    const headerText = header.querySelector("span");
+    const header = fixture.nativeElement.querySelector(".section-container .section-header");
+    const headerText = header.querySelector(".section-title");
     expect(headerText.textContent).toEqual("Output:");
   });
 
   it("should display a textarea", () => {
-    const content = fixture.nativeElement.querySelector(".container .content");
-    const textarea = content.querySelector("textarea");
+    const content = fixture.nativeElement.querySelector(".section-container .section-content");
+    const textarea = content.querySelector(".section-textarea");
     expect(textarea).toBeTruthy();
     expect(textarea.getAttribute("readonly")).toEqual("");
   });
@@ -36,7 +36,7 @@ describe(ReadonlyTextAreaComponent.name, () => {
   it("should display the output", () => {
     component.output = "value";
     fixture.detectChanges();
-    const textarea = fixture.nativeElement.querySelector(".container .content textarea");
+    const textarea = fixture.nativeElement.querySelector(".section-textarea");
     expect(textarea.value).toEqual("value");
   });
 
@@ -44,7 +44,7 @@ describe(ReadonlyTextAreaComponent.name, () => {
     spyOn(window.navigator.clipboard, "writeText");
     component.output = "Value";
     fixture.detectChanges();
-    const button = fixture.nativeElement.querySelector(".container .header button");
+    const button = fixture.nativeElement.querySelector("[data-testid='copy-btn']");
     button.click();
     expect(window.navigator.clipboard.writeText).toHaveBeenCalledWith("Value");
   });

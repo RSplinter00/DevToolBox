@@ -1,13 +1,13 @@
-<div class="container">
-  <div class="header">
-    <span>Output:</span>
+<div class="section-container">
+  <div class="section-header">
+    <span class="section-title">Output:</span>
     <button (click)="copyToClipboard()" color="primary" data-testid="copy-btn" mat-raised-button>Copy</button>
   </div>
 
-  <div class="content">
+  <div class="section-content">
     <mat-card>
       <mat-card-content>
-        <textarea [lang]="'json'" highlight-js>{{ jsonInput }}</textarea>
+        <textarea highlight-js lang="json">{{ jsonInput }}</textarea>
       </mat-card-content>
     </mat-card>
   </div>

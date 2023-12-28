@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="header">
-    <span data-testid="header-text">{{ headerText }}</span>
+<div class="section-container">
+  <div class="section-header">
+    <span class="section-title" data-testid="header-text">{{ headerText }}</span>
     <button (click)="clearInput()" color="primary" data-testid="clear-btn" mat-raised-button>Clear</button>
 
     @if (options != undefined && options.length > 0) {
@@ -12,7 +12,7 @@
     }
   </div>
 
-  <div class="content">
-    <textarea [formControl]="input" data-testid="input-textarea"></textarea>
+  <div class="section-content">
+    <textarea [formControl]="input" class="section-textarea" data-testid="input-textarea"></textarea>
   </div>
 </div>
