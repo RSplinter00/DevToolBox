@@ -1,0 +1,12 @@
+<mat-grid-list cols="2" gutterSize="1rem" rowHeight="fit">
+  <mat-grid-tile>
+    <div>
+      <app-text-area (inputChanged)="validateJson($event)"></app-text-area>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div>
+      <app-json-viewer [jsonInput]="formattedJson"></app-json-viewer>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

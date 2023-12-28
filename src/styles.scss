@@ -51,3 +51,11 @@ mat-option[aria-selected="true"] span {
   color: mat.get-theme-color($theme-app, foreground, text) !important;
   font-weight: bolder !important;
 }
+
+pre {
+  margin: 0;
+}
+
+.hljs {
+  background: transparent;
+}
