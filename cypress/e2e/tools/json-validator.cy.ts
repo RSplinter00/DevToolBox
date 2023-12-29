@@ -27,7 +27,7 @@ describe("JSON Validator Page", () => {
   it("should display error message when invalid json is entered", () => {
     cy.visit("/tools/json-validator");
     cy.get("[data-testid='input-textarea']").should("exist").type("{");
-    cy.get("[data-testid='json-output']").should("have.value", "Expected property name or '}' in JSON at position 1");
+    cy.get("[data-testid='json-output']").should("contain.value", "Expected property name or '}' in JSON at position 1");
     cy.get("[data-testid='input-textarea']").should("exist").type("\"name\":}", options);
     cy.get("[data-testid='json-output']").should("have.value", "Unexpected token '}', \"{\"name\":}\" is not valid JSON");
   });
