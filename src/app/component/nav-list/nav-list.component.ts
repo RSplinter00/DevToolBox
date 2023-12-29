@@ -14,8 +14,8 @@ import {NavListItem} from "../../model/nav-list-item";
 })
 export class NavListComponent {
   navItems: NavListItem[] = [
-    {name: "Base64 Encoder", link: "/tools/base64-encoder", tag: "base64-encoder"},
-    {name: "Diff Viewer", link: "/tools/diff-viewer", tag: "diff-viewer"},
-    {name: "JSON Validator", link: "/tools/json-validator", tag: "json-validator"},
+    {name: "Base64 Encoder", path: "base64-encoder"},
+    {name: "Diff Viewer", path: "diff-viewer"},
+    {name: "JSON Validator", path: "/json-validator"},
   ];
 }

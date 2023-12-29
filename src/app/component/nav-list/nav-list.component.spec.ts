@@ -31,12 +31,14 @@ describe(NavListComponent.name, () => {
     expect(listItems[0].href).toEqual("https://github.com/RSplinter00/DevToolBox");
     expect(listItems[0].textContent).toContain("Support on Github");
     expect(listItems[0].querySelector("mat-icon").textContent).toEqual("star");
+    expect(listItems[0].getAttribute("target")).toEqual("_blank");
+    expect(listItems[0].getAttribute("rel")).toEqual("noreferrer noopener");
   });
 
   it("should display nav items", () => {
     const mockNavItems: NavListItem[] = [
-      {name: "home", link: "/home", tag: "home"},
-      {name: "about", link: "/about", tag: "about"}
+      {name: "home", path: "home"},
+      {name: "about", path: "about"}
     ];
     component.navItems = mockNavItems;
     fixture.detectChanges();
@@ -45,8 +47,8 @@ describe(NavListComponent.name, () => {
     const listItems = navList.querySelectorAll("a");
     expect(listItems).toHaveSize(mockNavItems.length + 1);
     mockNavItems.forEach((item: NavListItem, idx: number) => {
-      expect(listItems[idx + 1].textContent).toEqual(item.name);
-      expect(listItems[idx + 1].getAttribute("href")).toEqual(item.link);
+      expect(listItems[idx + 1].textContent).toContain(item.name);
+      expect(listItems[idx + 1].getAttribute("href")).toEqual("/tools/" + item.path);
     });
   });
 });
