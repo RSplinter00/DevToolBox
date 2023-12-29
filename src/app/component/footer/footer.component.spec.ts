@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import {FooterComponent} from './footer.component';
+import {FooterComponent} from "./footer.component";
 import {appConfig} from "../../app.config";
 
 describe(FooterComponent.name, () => {

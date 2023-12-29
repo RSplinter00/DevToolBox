@@ -4,7 +4,7 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class PageTitleStrategy extends TitleStrategy {
-  readonly applicationName: string = "Dev's ToolBox";
+  private readonly applicationName: string = "Dev's ToolBox";
 
   constructor(private readonly title: Title) {
     super();

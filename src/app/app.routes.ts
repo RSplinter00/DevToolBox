@@ -1,4 +1,4 @@
-import {Routes} from '@angular/router';
+import {Routes} from "@angular/router";
 
 export const routes: Routes = [
   {
@@ -19,6 +19,12 @@ export const routes: Routes = [
         title: "Diff Viewer",
         loadComponent: () => import("./component/tools/diff-viewer/diff-viewer.component")
           .then(c => c.DiffViewerComponent)
+      },
+      {
+        path: "json-validator",
+        title: "JSON Validator",
+        loadComponent: () => import("./component/tools/json-validator/json-validator.component")
+          .then(c => c.JsonValidatorComponent)
       }
     ]
   },

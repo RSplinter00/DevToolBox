@@ -1,5 +1,11 @@
 import AUTWindow = Cypress.AUTWindow;
 
+type EncodingData = {
+  decodedValue: string;
+  encodedValue: string;
+  urlEncodedValue: string;
+};
+
 describe("Base64 Encoder Page", () => {
   it("should show the Base64 Encoder page", () => {
     cy.visit("/tools/base64-encoder");
@@ -10,7 +16,7 @@ describe("Base64 Encoder Page", () => {
 
   it("should encode to Base64", () => {
     cy.fixture("base64-encoding.json").then(data => {
-      data.forEach((item: { decodedValue: string, encodedValue: string }) => {
+      data.forEach((item: EncodingData) => {
         cy.visit("/tools/base64-encoder");
         cy.get("[data-testid='input-textarea']").should("exist").type(item.decodedValue);
         cy.get("[data-testid='output-textarea']").should("have.value", item.encodedValue);
@@ -20,7 +26,7 @@ describe("Base64 Encoder Page", () => {
 
   it("should decode from Base64", () => {
     cy.fixture("base64-encoding.json").then(data => {
-      data.forEach((item: { decodedValue: string, encodedValue: string }) => {
+      data.forEach((item: EncodingData) => {
         cy.visit("/tools/base64-encoder");
         cy.get("[data-testid='options-select']").should("exist").click()
           .get("[data-testid='option-decode']").click();
@@ -32,7 +38,7 @@ describe("Base64 Encoder Page", () => {
 
   it("should encode to Base64 URL", () => {
     cy.fixture("base64-encoding.json").then(data => {
-      data.forEach((item: { decodedValue: string, urlEncodedValue: string }) => {
+      data.forEach((item: EncodingData) => {
         cy.visit("/tools/base64-encoder");
         cy.get("[data-testid='options-select']").should("exist").click()
           .get("[data-testid='option-urlEncode']").click();
@@ -44,7 +50,7 @@ describe("Base64 Encoder Page", () => {
 
   it("should decode from Base64 URL", () => {
     cy.fixture("base64-encoding.json").then(data => {
-      data.forEach((item: { decodedValue: string, urlEncodedValue: string }) => {
+      data.forEach((item: EncodingData) => {
         cy.visit("/tools/base64-encoder");
         cy.get("[data-testid='options-select']").should("exist").click()
           .get("[data-testid='option-urlDecode']").click();

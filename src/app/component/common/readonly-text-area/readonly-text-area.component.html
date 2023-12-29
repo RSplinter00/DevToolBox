@@ -1,10 +1,11 @@
-<div class="container">
-  <div class="header">
-    <span>Output:</span>
+<div class="section-container">
+  <div class="section-header">
+    <span class="section-title">Output:</span>
     <button (click)="copyToClipboard()" color="primary" data-testid="copy-btn" mat-raised-button>Copy</button>
   </div>
 
-  <div class="content">
-    <textarea [textContent]="output" data-testid="output-textarea" readonly></textarea>
+  <div class="section-content">
+    <textarea [textContent]="output" class="section-textarea scrollable" data-testid="output-textarea"
+              readonly></textarea>
   </div>
 </div>

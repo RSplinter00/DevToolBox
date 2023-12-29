@@ -1,14 +1,12 @@
 <mat-grid-list class="grid-list" cols="2" gutterSize="1rem" rowHeight="fit">
   <mat-grid-tile>
     <div class="grid-tile-content">
-      <app-text-area (inputChanged)="transform($event)"
-                     (optionChanged)="setOptions($event)"
-                     [options]="options"></app-text-area>
+      <app-text-area (inputChanged)="validateJson($event)"></app-text-area>
     </div>
   </mat-grid-tile>
   <mat-grid-tile>
     <div class="grid-tile-content">
-      <app-readonly-text-area [output]="output"></app-readonly-text-area>
+      <app-json-viewer [jsonInput]="jsonObject"></app-json-viewer>
     </div>
   </mat-grid-tile>
 </mat-grid-list>

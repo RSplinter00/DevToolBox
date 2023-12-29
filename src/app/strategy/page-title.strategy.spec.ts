@@ -1,4 +1,4 @@
-import {PageTitleStrategy} from './page-title.strategy';
+import {PageTitleStrategy} from "./page-title.strategy";
 import {provideRouter, Router, TitleStrategy} from "@angular/router";
 import {fakeAsync, TestBed, tick} from "@angular/core/testing";
 import {provideLocationMocks} from "@angular/common/testing";

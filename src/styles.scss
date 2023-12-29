@@ -1,8 +1,8 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 @include mat.core();
 
-@import './app/styles/colors';
+@import "./app/styles/colors";
 
 @include mat.all-component-themes($theme-app);
 
@@ -19,15 +19,26 @@ button {
   font-weight: bold !important;
 }
 
-textarea {
+textarea, input {
   background-color: mat.get-theme-color($theme-app, background, card);
   color: mat.get-theme-color($theme-app, foreground, text);
-  resize: none;
   border-radius: 10px;
   border: 1px solid white;
+}
+
+textarea {
+  resize: none;
   line-height: 1.5rem;
   font-size: 0.875rem;
+}
 
+input {
+  line-height: 2rem;
+  font-size: 1rem;
+  padding: 0 1rem;
+}
+
+.scrollable {
   &::-webkit-scrollbar {
     width: 10px;
     background-color: transparent;
@@ -38,7 +49,7 @@ textarea {
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #249de4;
+    background-color: mat.get-theme-color($theme-app, foreground, disabled-button);
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
@@ -50,4 +61,14 @@ textarea {
 mat-option[aria-selected="true"] span {
   color: mat.get-theme-color($theme-app, foreground, text) !important;
   font-weight: bolder !important;
+}
+
+pre {
+  margin: 0;
+}
+
+.hljs {
+  background: transparent;
+  word-break: break-all;
+  white-space: break-spaces;
 }

@@ -1,7 +1,8 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import {NavListComponent} from './nav-list.component';
+import {NavListComponent} from "./nav-list.component";
 import {provideRouter} from "@angular/router";
+import {NavListItem} from "../../model/nav-list-item";
 
 describe(NavListComponent.name, () => {
   let component: NavListComponent;
@@ -33,7 +34,7 @@ describe(NavListComponent.name, () => {
   });
 
   it("should display nav items", () => {
-    const mockNavItems: { name: string, link: string, tag: string }[] = [
+    const mockNavItems: NavListItem[] = [
       {name: "home", link: "/home", tag: "home"},
       {name: "about", link: "/about", tag: "about"}
     ];
@@ -43,7 +44,7 @@ describe(NavListComponent.name, () => {
     const navList = fixture.nativeElement.querySelector("mat-nav-list");
     const listItems = navList.querySelectorAll("a");
     expect(listItems).toHaveSize(mockNavItems.length + 1);
-    mockNavItems.forEach((item: { name: string, link: string }, idx: number) => {
+    mockNavItems.forEach((item: NavListItem, idx: number) => {
       expect(listItems[idx + 1].textContent).toEqual(item.name);
       expect(listItems[idx + 1].getAttribute("href")).toEqual(item.link);
     });

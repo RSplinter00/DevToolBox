@@ -2,9 +2,9 @@
   {
     "original": "HelloWorld",
     "updated": "HelloWorld",
-    "output": [
+    "changes": [
       {
-        "value": "HelloWorld",
+        "text": "HelloWorld",
         "className": "diff-unchanged"
       }
     ]
@@ -12,21 +12,21 @@
   {
     "original": "Hello",
     "updated": "HiHelloWorld",
-    "output": [
+    "changes": [
       {
-        "value": "H",
+        "text": "H",
         "className": "diff-unchanged"
       },
       {
-        "value": "iH",
+        "text": "iH",
         "className": "diff-added"
       },
       {
-        "value": "ello",
+        "text": "ello",
         "className": "diff-unchanged"
       },
       {
-        "value": "World",
+        "text": "World",
         "className": "diff-added"
       }
     ]
@@ -34,21 +34,21 @@
   {
     "original": "HelloWorld",
     "updated": "HelWor",
-    "output": [
+    "changes": [
       {
-        "value": "Hel",
+        "text": "Hel",
         "className": "diff-unchanged"
       },
       {
-        "value": "lo",
+        "text": "lo",
         "className": "diff-removed"
       },
       {
-        "value": "Wor",
+        "text": "Wor",
         "className": "diff-unchanged"
       },
       {
-        "value": "ld",
+        "text": "ld",
         "className": "diff-removed"
       }
     ]
@@ -56,21 +56,21 @@
   {
     "original": "HelloWorld",
     "updated": "Hello World\n \nHi",
-    "output": [
+    "changes": [
       {
-        "value": "Hello",
+        "text": "Hello",
         "className": "diff-unchanged"
       },
       {
-        "value": "&nbsp;",
+        "text": "&nbsp;",
         "className": "diff-added"
       },
       {
-        "value": "World",
+        "text": "World",
         "className": "diff-unchanged"
       },
       {
-        "value": "<br>&nbsp;<br>Hi",
+        "text": "<br>&nbsp;<br>Hi",
         "className": "diff-added"
       }
     ]

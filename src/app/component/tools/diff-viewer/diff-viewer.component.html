@@ -1,21 +1,21 @@
-<mat-grid-list cols="2" gutterSize="1rem" rowHeight="fit">
+<mat-grid-list class="grid-list" cols="2" gutterSize="1rem" rowHeight="fit">
   <mat-grid-tile>
-    <div>
+    <div class="grid-tile-content">
       <app-text-area (inputChanged)="setOriginal($event)" data-testid="original-input"
                      headerText="Original:"></app-text-area>
     </div>
   </mat-grid-tile>
   <mat-grid-tile>
-    <div>
+    <div class="grid-tile-content">
       <app-text-area (inputChanged)="setUpdated($event)" data-testid="updated-input"
                      headerText="Updated:"></app-text-area>
     </div>
   </mat-grid-tile>
   <mat-grid-tile colspan="2">
-    <cdk-virtual-scroll-viewport [itemSize]="differences.length" id="output-viewport">
+    <cdk-virtual-scroll-viewport [itemSize]="changes.length" id="output-viewport">
       <mat-card>
         <mat-card-content>
-          <span *cdkVirtualFor="let diff of differences" [innerHTML]="diff.text" [ngClass]="diff.className"></span>
+          <span *cdkVirtualFor="let diff of changes" [innerHTML]="diff.text" [ngClass]="diff.className"></span>
         </mat-card-content>
       </mat-card>
     </cdk-virtual-scroll-viewport>
