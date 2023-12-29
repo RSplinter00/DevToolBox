@@ -6,7 +6,8 @@
   "compilerOptions": {
     "sourceMap": false,
     "types": [
-      "cypress"
+      "cypress",
+      "cypress-real-events"
     ]
   }
 }
