@@ -4,8 +4,11 @@
     <div class="options-wrapper">
       <span>Spacing:</span>
       <mat-select [formControl]="spacingControl" data-testid="spacing-select">
-        <mat-option data-testid="spacing-option-2" value="2">2 spaces</mat-option>
-        <mat-option data-testid="spacing-option-4" value="4">4 spaces</mat-option>
+        @for (spacingOption of spacingOptions; track spacingOption) {
+          <mat-option [value]="spacingOption" [attr.data-testid]="'spacing-option-' + spacingOption">
+            {{ spacingOption }} spaces
+          </mat-option>
+        }
       </mat-select>
       <button (click)="copyToClipboard()" color="primary" data-testid="copy-btn" mat-raised-button>Copy</button>
     </div>
@@ -18,4 +21,6 @@
       </mat-card-content>
     </mat-card>
   </div>
+
+  <input [formControl]="filterControl" matInput placeholder="JSON path filter" type="text">
 </div>
