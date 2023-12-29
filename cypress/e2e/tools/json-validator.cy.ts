@@ -44,7 +44,7 @@ describe("JSON Validator Page", () => {
     cy.visit("/tools/json-validator");
     cy.get("[data-testid='input-textarea']").should("exist")
       .type(JSON.stringify(inputObject), options);
-    cy.get("[data-testid='copy-btn']").should("exist").click();
+    cy.get("[data-testid='copy-btn']").should("exist").focus().click();
     cy.window().then((win: AUTWindow) => {
       win.navigator.clipboard.readText()
         .then((text: string) => expect(text).to.eq(JSON.stringify(inputObject, null, 4)));
@@ -73,7 +73,7 @@ describe("JSON Validator Page", () => {
     cy.get("[data-testid='input-textarea']").should("exist")
       .type(JSON.stringify(inputObject), options);
     cy.get("[data-testid='filter-input']").should("exist").type("$.cart[0].item");
-    cy.get("[data-testid='copy-btn']").should("exist").click();
+    cy.get("[data-testid='copy-btn']").should("exist").focus().click();
     cy.window().then((win: AUTWindow) => {
       win.navigator.clipboard.readText()
         .then((text: string) => expect(text).to.eq(JSON.stringify(["apple"], null, 4)));
