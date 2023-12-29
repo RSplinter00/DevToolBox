@@ -33,7 +33,7 @@ describe(JsonValidatorComponent.name, () => {
     component.validateJson(input);
     fixture.detectChanges();
     const jsonOutput = fixture.nativeElement.querySelector("app-json-viewer textarea");
-    expect(jsonOutput.textContent).toEqual(JSON.stringify(inputObj, null, 2));
+    expect(jsonOutput.textContent).toEqual(JSON.stringify(inputObj, null, 4));
   });
 
   it("should show an empty text, if input is empty", () => {

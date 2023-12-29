@@ -1,20 +1,27 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {JsonViewerComponent} from "./json-viewer.component";
-import {SimpleChange, SimpleChanges} from "@angular/core";
+import {HarnessLoader} from "@angular/cdk/testing";
+import {TestbedHarnessEnvironment} from "@angular/cdk/testing/testbed";
+import {MatSelectHarness} from "@angular/material/select/testing";
+import {MatOptionHarness} from "@angular/material/core/testing";
+import {provideNoopAnimations} from "@angular/platform-browser/animations";
 
 describe(JsonViewerComponent.name, () => {
   let component: JsonViewerComponent;
   let fixture: ComponentFixture<JsonViewerComponent>;
+  let loader: HarnessLoader;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [JsonViewerComponent]
+      imports: [JsonViewerComponent],
+      providers: [provideNoopAnimations()]
     }).compileComponents();
 
     fixture = TestBed.createComponent(JsonViewerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    loader = TestbedHarnessEnvironment.loader(fixture);
   });
 
   it("should create JSON Viewer component", () => {
@@ -24,8 +31,10 @@ describe(JsonViewerComponent.name, () => {
   it("should display a header div", () => {
     const header = fixture.nativeElement.querySelector(".section-container .section-header");
     const headerText = header.querySelector(".section-title");
+    const spacingSelect = header.querySelector("mat-select");
     const copyButton = header.querySelector("[data-testid='copy-btn']");
     expect(headerText.textContent).toEqual("Output:");
+    expect(spacingSelect).toBeTruthy();
     expect(copyButton).toBeTruthy();
   });
 
@@ -38,27 +47,23 @@ describe(JsonViewerComponent.name, () => {
   });
 
   it("should display the formatted json object", () => {
-    component.jsonInput = JSON.stringify({"name": "John Doe"});
-    const changes: SimpleChanges = {
-      "jsonInput": {} as SimpleChange
-    } as SimpleChanges;
-    component.ngOnChanges(changes);
+    const input: object = {"name": "John Doe"};
+    component.jsonInput = input;
+    component.ngOnChanges();
     fixture.detectChanges();
     const textarea = fixture.nativeElement.querySelector("textarea");
-    expect(textarea.value).toEqual('{"name":"John Doe"}');
+    expect(textarea.value).toEqual(JSON.stringify(input, null, 4));
   });
 
   it("should copy the output on button click", () => {
     spyOn(window.navigator.clipboard, "writeText");
-    component.jsonInput = JSON.stringify({"name": "John Doe"});
-    const changes: SimpleChanges = {
-      "jsonInput": {} as SimpleChange
-    } as SimpleChanges;
-    component.ngOnChanges(changes);
+    const input: object = {"name": "John Doe"};
+    component.jsonInput = input;
+    component.ngOnChanges();
     fixture.detectChanges();
     const button = fixture.nativeElement.querySelector("[data-testid='copy-btn']");
     button.click();
-    expect(window.navigator.clipboard.writeText).toHaveBeenCalledWith('{"name":"John Doe"}');
+    expect(window.navigator.clipboard.writeText).toHaveBeenCalledWith(JSON.stringify(input, null, 4));
   });
 
   it("should not copy the output on button click if output is undefined", () => {
@@ -68,5 +73,39 @@ describe(JsonViewerComponent.name, () => {
     const button = fixture.nativeElement.querySelector("[data-testid='copy-btn']");
     button.click();
     expect(window.navigator.clipboard.writeText).not.toHaveBeenCalled();
+  });
+
+  it("should format the json object with two spacing, if selected", async () => {
+    spyOn(JSON, "stringify").and.callThrough();
+    const select: MatSelectHarness = await loader.getHarness(MatSelectHarness);
+    await select.open();
+    const options: MatOptionHarness[] = await select.getOptions();
+    expect(options.length).toEqual(2);
+    expect(await options[0].getText()).toEqual("2 spaces");
+    expect(await options[1].getText()).toEqual("4 spaces");
+    await options[0].click();
+    component.jsonInput = {"name": "John Doe"};
+    component.ngOnChanges();
+    expect(JSON.stringify).toHaveBeenCalledWith({"name": "John Doe"}, null, 2);
+  });
+
+  it("should reformat the json object with selected spacing, on value changed", async () => {
+    spyOn(JSON, "stringify").and.callThrough();
+    component.jsonInput = {"name": "John Doe"};
+    component.ngOnChanges();
+    const select: MatSelectHarness = await loader.getHarness(MatSelectHarness);
+    await select.open();
+    const options: MatOptionHarness[] = await select.getOptions();
+    await options[0].click();
+    expect(JSON.stringify).toHaveBeenCalledWith({"name": "John Doe"}, null, 4);
+    expect(JSON.stringify).toHaveBeenCalledWith({"name": "John Doe"}, null, 2);
+  });
+
+  it("should default to four spacing, if selected spacing is undefined", () => {
+    spyOn(JSON, "stringify").and.callThrough();
+    component.spacingControl.setValue(null);
+    component.jsonInput = {"name": "John Doe"};
+    component.ngOnChanges();
+    expect(JSON.stringify).toHaveBeenCalledWith({"name": "John Doe"}, null, 4);
   });
 });

@@ -1,5 +1,18 @@
 .section-header {
   justify-content: space-between;
+
+  .options-wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+
+    mat-select {
+      color: white;
+      width: 10rem;
+      text-transform: capitalize;
+      display: flex;
+    }
+  }
 }
 
 .section-content {
