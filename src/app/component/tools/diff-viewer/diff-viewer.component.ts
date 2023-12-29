@@ -5,6 +5,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {Change, diffChars} from "diff";
 import {MatCardModule} from "@angular/material/card";
 import {CdkVirtualForOf, ScrollingModule} from "@angular/cdk/scrolling";
+import {ChangeInfo} from "../../../model/change-info";
 
 @Component({
   selector: "app-diff-viewer",
@@ -17,7 +18,7 @@ import {CdkVirtualForOf, ScrollingModule} from "@angular/cdk/scrolling";
 export class DiffViewerComponent {
   original: string = "";
   updated: string = "";
-  differences: { text: string, className: string }[] = []
+  changes: ChangeInfo[] = []
 
   setOriginal(original: string): void {
     this.original = original;
@@ -31,11 +32,11 @@ export class DiffViewerComponent {
 
   compareChanges(): void {
     const changes: Change[] = diffChars(this.original, this.updated);
-    this.differences = changes.map((change: Change) => {
+    this.changes = changes.map((change: Change) => {
       return {
         text: this.parseText(change.value),
         className: this.getClassName(change)
-      }
+      } as ChangeInfo;
     });
   }
 

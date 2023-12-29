@@ -2,8 +2,14 @@ import {TestBed} from "@angular/core/testing";
 
 import {EncodingService} from "./encoding.service";
 
+type EncodingData = {
+  decodedValue: string;
+  encodedValue: string;
+  urlEncodedValue: string;
+};
+
 describe(EncodingService.name, () => {
-  const provideParameters: { decodedValue: string, encodedValue: string, urlEncodedValue: string }[] = [
+  const provideParameters: EncodingData[] = [
     {decodedValue: "value", encodedValue: "dmFsdWU=", urlEncodedValue: "value"},
     {
       decodedValue: "Test@Service&With?$==",
@@ -25,28 +31,28 @@ describe(EncodingService.name, () => {
     expect(service).toBeTruthy();
   });
 
-  provideParameters.forEach((parameter: { decodedValue: string, encodedValue: string }) => {
+  provideParameters.forEach((parameter: EncodingData) => {
     it(`should encode '${parameter.decodedValue}' to base64`, () => {
       const result: string = service.encode(parameter.decodedValue);
       expect(result).toEqual(parameter.encodedValue);
     });
   });
 
-  provideParameters.forEach((parameter: { decodedValue: string, encodedValue: string }) => {
+  provideParameters.forEach((parameter: EncodingData) => {
     it(`should decode '${parameter.encodedValue}' to plain text`, () => {
       const result: string = service.decode(parameter.encodedValue);
       expect(result).toEqual(parameter.decodedValue);
     });
   });
 
-  provideParameters.forEach((parameter: { decodedValue: string, urlEncodedValue: string }) => {
+  provideParameters.forEach((parameter: EncodingData) => {
     it(`should url encode '${parameter.decodedValue}' to base64`, () => {
       const result: string = service.urlEncode(parameter.decodedValue);
       expect(result).toEqual(parameter.urlEncodedValue);
     });
   });
 
-  provideParameters.forEach((parameter: { decodedValue: string, urlEncodedValue: string }) => {
+  provideParameters.forEach((parameter: EncodingData) => {
     it(`should url decode '${parameter.urlEncodedValue}' to plain text`, () => {
       const result: string = service.urlDecode(parameter.urlEncodedValue);
       expect(result).toEqual(parameter.decodedValue);

@@ -12,10 +12,10 @@
     </div>
   </mat-grid-tile>
   <mat-grid-tile colspan="2">
-    <cdk-virtual-scroll-viewport [itemSize]="differences.length" id="output-viewport">
+    <cdk-virtual-scroll-viewport [itemSize]="changes.length" id="output-viewport">
       <mat-card>
         <mat-card-content>
-          <span *cdkVirtualFor="let diff of differences" [innerHTML]="diff.text" [ngClass]="diff.className"></span>
+          <span *cdkVirtualFor="let diff of changes" [innerHTML]="diff.text" [ngClass]="diff.className"></span>
         </mat-card-content>
       </mat-card>
     </cdk-virtual-scroll-viewport>
