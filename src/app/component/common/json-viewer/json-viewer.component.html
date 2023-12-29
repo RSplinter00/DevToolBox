@@ -17,10 +17,10 @@
   <div class="section-content">
     <mat-card class="scrollable">
       <mat-card-content>
-        <textarea highlight-js lang="json">{{ formattedJsonObject }}</textarea>
+        <textarea data-testid="json-output" highlight-js lang="json">{{ formattedJsonObject }}</textarea>
       </mat-card-content>
     </mat-card>
   </div>
 
-  <input [formControl]="filterControl" matInput placeholder="JSON path filter" type="text">
+  <input [formControl]="filterControl" data-testid="filter-input" matInput placeholder="JSON path filter" type="text">
 </div>

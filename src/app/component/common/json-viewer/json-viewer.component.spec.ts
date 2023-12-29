@@ -120,12 +120,11 @@ describe(JsonViewerComponent.name, () => {
   });
 
   it("should reset the displayed json object, after removing the filter", () => {
-    const inputObj: object = {name: "John Doe", age: 42};
-    component.jsonInput = inputObj;
+    component.jsonInput = inputObject;
     component.filterControl.setValue("$.name");
     expect(component.formattedJsonObject).toEqual(JSON.stringify(["John Doe"], null, 4));
     component.filterControl.setValue("");
-    expect(component.formattedJsonObject).toEqual(JSON.stringify(inputObj, null, 4));
+    expect(component.formattedJsonObject).toEqual(JSON.stringify(inputObject, null, 4));
   });
 
   it("should display an empty array if no data matches the filter", () => {
