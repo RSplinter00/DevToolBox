@@ -5,7 +5,8 @@
   </a>
 
   @for (item of navItems; track item.name) {
-    <a mat-list-item [routerLink]="'/tools/' + item.path" [attr.data-testid]="'nav-item-' + item.path">
+    <a mat-list-item [routerLink]="'/tools/' + item.path" [attr.data-testid]="'nav-item-' + item.path"
+       routerLinkActive="active">
       {{ item.name }}
     </a>
   }

@@ -1,22 +1,27 @@
-import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
 
 import {NavListComponent} from "./nav-list.component";
-import {provideRouter} from "@angular/router";
+import {provideRouter, Router} from "@angular/router";
 import {NavListItem} from "../../model/nav-list-item";
+import {By} from "@angular/platform-browser";
+import {routes} from "../../app.routes";
+import {DebugElement} from "@angular/core";
 
 describe(NavListComponent.name, () => {
   let component: NavListComponent;
   let fixture: ComponentFixture<NavListComponent>;
+  let router: Router;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [NavListComponent],
-      providers: [provideRouter([])]
+      providers: [provideRouter(routes)]
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavListComponent);
     fixture.autoDetectChanges();
     component = fixture.componentInstance;
+    router = TestBed.inject(Router);
   });
 
   it("should create navList component", () => {
@@ -51,4 +56,11 @@ describe(NavListComponent.name, () => {
       expect(listItems[idx + 1].getAttribute("href")).toEqual("/tools/" + item.path);
     });
   });
+
+  it("should display active nav  item", fakeAsync(() => {
+    router.navigate(["/tools/base64-encoder"]);
+    tick();
+    const activeLinks: DebugElement[] = fixture.debugElement.queryAll(By.css(".active"));
+    expect(activeLinks).toHaveSize(1);
+  }));
 });
