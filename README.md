@@ -4,7 +4,7 @@
 
 This project is a collection of tools commonly used by developers.
 The goal is to have a single place to go to for all your development needs.
-This prevents developers from having to go to different sketchy websites and deal with ads and other annoyances.
+This prevents developers from having to go to different websites and deal with ads and other annoyances.
 
 Checkout the project [here][app-url].
 
@@ -12,8 +12,7 @@ Checkout the project [here][app-url].
 
 ## Built with
 
-This is an [Angular][angular-url] 17 project, designed with Angular Material.  
-To learn more about these, checkout the following resources:
+This is an [Angular][angular-url] 17 project, designed with Angular Material. To learn more about these, checkout the following resources:
 
 - [Angular][angular-docs-url] - Learn about Angular and its core concepts.
 - [Angular Material][angular-material-url] - Learn about Angular Material and its components.
@@ -22,7 +21,7 @@ To learn more about these, checkout the following resources:
 
 ### Prerequisites
 
-To get started, make sure that npm node.js and Angular are installed on your machine.
+To get started, make sure that Node.js and Angular are installed on your machine.
 
 - Node.js: install an active LTS version [here][nodejs-download-url] or use your package manager of choice.
 - Angular: `npm install -g @angular/cli`
@@ -52,8 +51,12 @@ Also don't forget to give the project a **star**!
 
 1. Clone the project: `git clone https://github.com/RSplinter00/DevToolBox.git`
 2. Create your feature branch: `git checkout -b feature/YourGreatFeature`
-3. Commit your changes: `git commit -m 'Add some great feature'`
+3. Commit your changes: `git commit -m "Add some great feature"`
 4. Push to the branch: `git push origin feature/YourGreatFeature`
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- Markdown links and images -->
 
