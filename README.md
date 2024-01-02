@@ -1,27 +1,72 @@
+![GitHub Workflow Status (with event)][github-status-url]
+
 # DevToolBox
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.2.
+This project is a collection of tools commonly used by developers.
+The goal is to have a single place to go to for all your development needs.
+This prevents developers from having to go to different sketchy websites and deal with ads and other annoyances.
 
-## Development server
+Checkout the project [here][app-url].
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+[![Dev's Toolbox Screenshot][app-screenshot]][app-url]
 
-## Code scaffolding
+## Built with
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This is an [Angular][angular-url] 17 project, designed with Angular Material.  
+To learn more about these, checkout the following resources:
 
-## Build
+- [Angular][angular-docs-url] - Learn about Angular and its core concepts.
+- [Angular Material][angular-material-url] - Learn about Angular Material and its components.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Getting started
 
-## Running unit tests
+### Prerequisites
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To get started, make sure that npm node.js and Angular are installed on your machine.
 
-## Running end-to-end tests
+- Node.js: install an active LTS version [here][nodejs-download-url] or use your package manager of choice.
+- Angular: `npm install -g @angular/cli`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Setup
 
-## Further help
+1. Install dependencies: `npm install`
+2. Build the project: `npm run build`
+3. Run the project: `npm run start`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Open [http://localhost:4200](http://localhost:4200) to view the application in your browser.
+
+### Testing
+
+This project uses Jasmine for unit testing and Cypress for e2e testing.
+
+- Run linting: `npm run lint`
+- Run unit tests: `npm run test`
+- Run unit tests with coverage: `npm run test:prod`
+- Run e2e tests: `npm run e2e`
+
+## Contributing
+
+Contributions to the project are **highly appreciated**!  
+If you have any suggestions or ideas, feel free to open an issue or submit a pull request.
+Also don't forget to give the project a **star**!
+
+1. Clone the project: `git clone https://github.com/RSplinter00/DevToolBox.git`
+2. Create your feature branch: `git checkout -b feature/YourGreatFeature`
+3. Commit your changes: `git commit -m 'Add some great feature'`
+4. Push to the branch: `git push origin feature/YourGreatFeature`
+
+<!-- Markdown links and images -->
+
+[app-url]: https://d2s4xhktjped69.cloudfront.net/
+
+[github-status-url]: https://img.shields.io/github/actions/workflow/status/RSplinter00/DevToolBox/build-pipeline.yml
+
+[angular-url]: https://angular.io/
+
+[angular-docs-url]: https://angular.io/docs
+
+[angular-material-url]: https://material.angular.io/
+
+[nodejs-download-url]: https://nodejs.org/en/download/
+
+[app-screenshot]: images/app-screenshot.png
