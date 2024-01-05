@@ -17,7 +17,7 @@ describe("Diff Viewer Page", () => {
     cy.get("mat-card").should("exist");
   });
 
-  it.only("should show changes between two strings", () => {
+  it("should show changes between two strings", () => {
     cy.fixture("diff-viewer.json").then(data => {
       data.forEach((item: DiffViewerData) => {
         cy.visit("/tools/diff-viewer");
