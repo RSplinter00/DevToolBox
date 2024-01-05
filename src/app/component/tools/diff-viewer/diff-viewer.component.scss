@@ -1,20 +1,34 @@
-#output-viewport {
+mat-card {
   height: 100%;
   width: 100%;
 
-  .diff-added {
-    color: #008000;
-    background-color: rgb(0, 128, 0, 0.2);
-    text-decoration: underline;
+  mat-card-content {
+    height: 100%;
   }
 
-  .diff-removed {
-    color: #ff0000;
-    background-color: rgba(255, 0, 0, 0.2);
-    text-decoration: line-through;
-  }
+  #output-viewport {
+    height: 100%;
+    width: 100%;
 
-  .diff-unchanged {
-    color: #808080;
+    span {
+      word-break: break-all;
+      white-space: break-spaces;
+    }
+
+    .diff-added {
+      color: #008000;
+      background-color: rgb(0, 128, 0, 0.2);
+      text-decoration: underline;
+    }
+
+    .diff-removed {
+      color: #ff0000;
+      background-color: rgba(255, 0, 0, 0.2);
+      text-decoration: line-through;
+    }
+
+    .diff-unchanged {
+      color: #808080;
+    }
   }
 }
