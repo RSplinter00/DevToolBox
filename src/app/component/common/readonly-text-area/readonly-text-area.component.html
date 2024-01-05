@@ -1,11 +1,13 @@
 <div class="section-container">
   <div class="section-header">
     <span class="section-title">Output:</span>
-    <button (click)="copyToClipboard()" color="primary" data-testid="copy-btn" mat-raised-button>Copy</button>
+    <button (click)="copyToClipboard()" color="primary" data-testid="copy-btn" mat-raised-button tabindex="40">
+      Copy
+    </button>
   </div>
 
   <div class="section-content">
     <textarea [textContent]="output" class="section-textarea scrollable" data-testid="output-textarea"
-              readonly></textarea>
+              readonly tabindex="-1"></textarea>
   </div>
 </div>

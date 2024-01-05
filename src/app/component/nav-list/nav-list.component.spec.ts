@@ -52,7 +52,7 @@ describe(NavListComponent.name, () => {
     const listItems = navList.querySelectorAll("a");
     expect(listItems).toHaveSize(mockNavItems.length + 1);
     mockNavItems.forEach((item: NavListItem, idx: number) => {
-      expect(listItems[idx + 1].textContent).toContain(item.name);
+      expect(listItems[idx + 1].textContent.trim()).toEqual(item.name);
       expect(listItems[idx + 1].getAttribute("href")).toEqual("/tools/" + item.path);
     });
   });
