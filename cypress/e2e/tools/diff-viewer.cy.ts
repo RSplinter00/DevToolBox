@@ -17,13 +17,13 @@ describe("Diff Viewer Page", () => {
     cy.get("mat-card").should("exist");
   });
 
-  it("should show changes between two strings", () => {
+  it.only("should show changes between two strings", () => {
     cy.fixture("diff-viewer.json").then(data => {
       data.forEach((item: DiffViewerData) => {
         cy.visit("/tools/diff-viewer");
         cy.get("[data-testid='original-input']").type(item.original);
         cy.get("[data-testid='updated-input']").type(item.updated);
-        cy.get("mat-card-content").children().should("have.length", item.changes.length).then((children: JQuery) => {
+        cy.get("#output-viewport span").should("have.length", item.changes.length).then((children: JQuery) => {
           children.get().forEach((child: HTMLElement, idx: number) => {
             expect(child.innerHTML).to.eq(item.changes[idx].text);
             expect(child.className).to.contain(item.changes[idx].className);

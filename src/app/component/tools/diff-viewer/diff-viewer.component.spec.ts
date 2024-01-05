@@ -22,7 +22,7 @@ describe(DiffViewerComponent.name, () => {
 
   it("should show two input text areas and an output field", () => {
     const textAreas = fixture.nativeElement.querySelectorAll("app-text-area");
-    const outputField = fixture.nativeElement.querySelector("#output-viewport mat-card");
+    const outputField = fixture.nativeElement.querySelector("mat-card #output-viewport");
     expect(textAreas.length).toBe(2);
     const headerOriginal = textAreas[0].querySelector(".section-header .section-title");
     const headerUpdated = textAreas[1].querySelector(".section-header .section-title");
