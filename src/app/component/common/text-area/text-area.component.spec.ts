@@ -43,7 +43,7 @@ describe(TextAreaComponent.name, () => {
     const headerText = header.querySelector(".section-title");
     const button = header.querySelector("button");
     expect(headerText.textContent).toEqual("Input:");
-    expect(button.textContent).toEqual("Clear");
+    expect(button.textContent.trim()).toEqual("Clear");
   });
 
   it("should display a textarea", () => {
