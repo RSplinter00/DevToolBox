@@ -6,7 +6,7 @@ This project is a collection of tools commonly used by developers.
 The goal is to have a single place to go to for all your development needs.
 This prevents developers from having to go to different websites and deal with ads and other annoyances.
 
-Checkout the project [here][app-url].
+Checkout the project at [devtoolbox.raymondsplinter.com][app-url]
 
 [![Dev's Toolbox Screenshot][app-screenshot]][app-url]
 
@@ -60,7 +60,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- Markdown links and images -->
 
-[app-url]: https://d2s4xhktjped69.cloudfront.net/
+[app-url]: https://devtoolbox.raymondsplinter.com/
 
 [github-status-url]: https://img.shields.io/github/actions/workflow/status/RSplinter00/DevToolBox/build-pipeline.yml
 
