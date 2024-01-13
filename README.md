@@ -60,7 +60,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- Markdown links and images -->
 
-[app-url]: https://d2s4xhktjped69.cloudfront.net/
+[app-url]: https://devtoolbox.raymondsplinter.com/
 
 [github-status-url]: https://img.shields.io/github/actions/workflow/status/RSplinter00/DevToolBox/build-pipeline.yml
 
