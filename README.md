@@ -6,7 +6,7 @@ This project is a collection of tools commonly used by developers.
 The goal is to have a single place to go to for all your development needs.
 This prevents developers from having to go to different websites and deal with ads and other annoyances.
 
-Checkout the project [here][app-url].
+Checkout the project at [devtoolbox.raymondsplinter.com][app-url]
 
 [![Dev's Toolbox Screenshot][app-screenshot]][app-url]
 
