@@ -1,0 +1,48 @@
+<ng-form [formGroup]="timeConversionForm">
+  <div id="time-converter-header">
+    <h1>Input:</h1>
+    <button (click)="setCurrentTime()" color="primary" data-testid="current-time-btn" mat-raised-button>Now</button>
+    <button (click)="clearInput()" color="warn" data-testid="clear-btn" mat-raised-button>Clear</button>
+  </div>
+
+  <mat-form-field>
+    <mat-label>Timestamp</mat-label>
+    <input data-testid="timestamp-input" formControlName="inputTimestamp" matInput>
+  </mat-form-field>
+
+  <h1 class="output-header">Output:</h1>
+  <mat-form-field>
+    <mat-label>UTC timezone</mat-label>
+    <input data-testid="utc-output" formControlName="utcTime" matInput readonly>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Local timezone</mat-label>
+    <input data-testid="local-output" formControlName="localTime" matInput readonly>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>ISO 8601</mat-label>
+    <input data-testid="iso-output" formControlName="isoTime" matInput readonly>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Unix time</mat-label>
+    <input data-testid="unix-output" formControlName="unixTime" matInput readonly>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Week of year</mat-label>
+    <input [value]="convertUtcToFormat('w')" data-testid="week-of-year-output" matInput
+           readonly>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Day of week</mat-label>
+    <input [value]="convertUtcToFormat('cccc')" data-testid="day-of-week-output" matInput
+           readonly>
+  </mat-form-field>
+
+  <h2 class="output-header">Other date formats:</h2>
+  @for (format of otherDateFormats; track format) {
+    <mat-form-field>
+      <mat-label>{{ format }}</mat-label>
+      <input [value]="convertUtcToFormat(format)" matInput readonly>
+    </mat-form-field>
+  }
+</ng-form>
