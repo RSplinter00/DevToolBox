@@ -4,11 +4,12 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {TimeConversionService} from "../../../service/time-conversion.service";
+import {OutputFieldComponent} from "../../common/output-field/output-field.component";
 
 @Component({
   selector: "app-time-converter",
   standalone: true,
-  imports: [CommonModule, FormsModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, MatInputModule, MatButtonModule, ReactiveFormsModule, OutputFieldComponent],
   providers: [DatePipe],
   templateUrl: "./time-converter.component.html",
   styleUrl: "./time-converter.component.scss"

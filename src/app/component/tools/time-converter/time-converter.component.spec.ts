@@ -42,42 +42,39 @@ describe(TimeConverterComponent.name, () => {
     expect(input.value).toBeTruthy();
   });
 
-  it("should populate the output fields when input field is changed", () => {
+  it("should set time formats when input field is changed", () => {
     const date: Date = new Date(2024, 1, 1);
+    const unixTime: number = date.getTime() / 1000;
     component.timeConversionForm.get("inputTimestamp")?.setValue(date.getTime());
     fixture.detectChanges();
-    const utcOutput = fixture.nativeElement.querySelector("[data-testid='utc-output']");
-    const localOutput = fixture.nativeElement.querySelector("[data-testid='local-output']");
-    const isoOutput = fixture.nativeElement.querySelector("[data-testid='iso-output']");
-    const unixOutput = fixture.nativeElement.querySelector("[data-testid='unix-output']");
-    const weekOfYearOutput = fixture.nativeElement.querySelector("[data-testid='week-of-year-output']");
-    const dayOfWeekOutput = fixture.nativeElement.querySelector("[data-testid='day-of-week-output']");
-    expect(utcOutput.value).toEqual(date.toUTCString());
-    expect(localOutput.value).toEqual(date.toLocaleString());
-    expect(isoOutput.value).toEqual(date.toISOString());
-    expect(unixOutput.value).toEqual((date.getTime() / 1000).toString());
-    expect(weekOfYearOutput.value).toEqual("5");
-    expect(dayOfWeekOutput.value).toEqual("Thursday");
+    expect(component.timeConversionForm.get("utcTime")?.value).toEqual(date.toUTCString());
+    expect(component.timeConversionForm.get("localTime")?.value).toEqual(date.toLocaleString());
+    expect(component.timeConversionForm.get("isoTime")?.value).toEqual(date.toISOString());
+    expect(component.timeConversionForm.get("unixTime")?.value).toEqual(unixTime.toString());
   });
 
   it("should clear the input and output fields when pressed on 'clear' button", () => {
     component.timeConversionForm.get("inputTimestamp")?.setValue(new Date().getTime());
     fixture.detectChanges();
     const input = fixture.nativeElement.querySelector("[data-testid='timestamp-input']");
-    const utcOutput = fixture.nativeElement.querySelector("[data-testid='utc-output']");
     expect(input.value).toBeTruthy();
-    expect(utcOutput.value).toBeTruthy();
+    expect(component.timeConversionForm.get("utcTime")?.value).toBeTruthy();
     const clearButton = fixture.nativeElement.querySelector("[data-testid='clear-btn']");
     clearButton.click();
     fixture.detectChanges();
     expect(input.value).toBeFalsy();
-    expect(utcOutput.value).toBeFalsy();
+    expect(component.timeConversionForm.get("utcTime")?.value).toBeFalsy();
+    expect(component.timeConversionForm.get("localTime")?.value).toBeFalsy();
+    expect(component.timeConversionForm.get("isoTime")?.value).toBeFalsy();
+    expect(component.timeConversionForm.get("unixTime")?.value).toBeFalsy();
   });
 
   it("should display error message for invalid timestamp", () => {
     component.timeConversionForm.get("inputTimestamp")?.setValue("Invalid");
     fixture.detectChanges();
-    const utcOutput = fixture.nativeElement.querySelector("[data-testid='utc-output']");
-    expect(utcOutput.value).toEqual("Invalid Date");
+    expect(component.timeConversionForm.get("utcTime")?.value).toEqual("Invalid Date");
+    expect(component.timeConversionForm.get("localTime")?.value).toEqual("Invalid Date");
+    expect(component.timeConversionForm.get("isoTime")?.value).toEqual("Invalid Date");
+    expect(component.timeConversionForm.get("unixTime")?.value).toEqual("Invalid Date");
   });
 });

@@ -1,0 +1,7 @@
+<mat-form-field>
+  <mat-label>{{ label }}</mat-label>
+  <input #inputValue [value]="value" matInput readonly>
+  <button [ngxClipboard]="inputValue" mat-icon-button matSuffix>
+    <mat-icon>content_copy</mat-icon>
+  </button>
+</mat-form-field>
