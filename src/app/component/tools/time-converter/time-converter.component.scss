@@ -7,6 +7,10 @@ ng-form {
     align-items: center;
     column-gap: 1rem;
     margin-bottom: 1rem;
+
+    mat-select {
+      max-width: 9rem;
+    }
   }
 
   h1, h2 {

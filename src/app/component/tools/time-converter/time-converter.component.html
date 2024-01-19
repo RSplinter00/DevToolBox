@@ -3,6 +3,12 @@
     <h1>Input:</h1>
     <button (click)="setCurrentTime()" color="primary" data-testid="current-time-btn" mat-raised-button>Now</button>
     <button (click)="clearInput()" color="warn" data-testid="clear-btn" mat-raised-button>Clear</button>
+
+    <mat-select [formControl]="inputFormat">
+      @for (option of timeConversionOptions; track option) {
+        <mat-option [value]="option">{{ option }}</mat-option>
+      }
+    </mat-select>
   </div>
 
   <mat-form-field>
