@@ -4,9 +4,11 @@
     <button (click)="setCurrentTime()" color="primary" data-testid="current-time-btn" mat-raised-button>Now</button>
     <button (click)="clearInput()" color="warn" data-testid="clear-btn" mat-raised-button>Clear</button>
 
-    <mat-select [formControl]="inputFormat">
+    <mat-select [formControl]="inputFormat" data-testid="input-format-select">
       @for (option of timeConversionOptions; track option) {
-        <mat-option [value]="option">{{ option }}</mat-option>
+        <mat-option [attr.data-testid]="'option-' + option.split(' ')[0].toLowerCase()" [value]="option">
+          {{ option }}
+        </mat-option>
       }
     </mat-select>
   </div>

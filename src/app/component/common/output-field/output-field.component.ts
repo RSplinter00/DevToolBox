@@ -16,4 +16,11 @@ import {ClipboardModule} from "ngx-clipboard";
 export class OutputFieldComponent {
   @Input() label!: string;
   @Input() value!: string;
+
+  getTestId(): string {
+    if (this.label == null || this.label.length === 0) {
+      return "output-field";
+    }
+    return `output-${this.label.toLowerCase().replaceAll(" ", "-")}`;
+  }
 }

@@ -32,4 +32,15 @@ describe(OutputFieldComponent.name, () => {
     expect(label.textContent).toContain("Label");
     expect(input.value).toContain("Value");
   });
+
+  it("should create a test id based on label", () => {
+    component.label = "ISO 8601 Id";
+    const testId: string = component.getTestId();
+    expect(testId).toBe("output-iso-8601-id");
+  });
+
+  it("should return base test id if label is null", () => {
+    const testId: string = component.getTestId();
+    expect(testId).toBe("output-field");
+  });
 });
