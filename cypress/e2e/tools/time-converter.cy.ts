@@ -17,10 +17,11 @@ describe("Time Converter Page", () => {
         cy.visit("/tools/time-converter");
         cy.get("[data-testid='input-format-select']").should("exist").click()
           .get(`[data-testid='option-${inputFormat}']`).click();
+        const localDate: string = new Date(timestamps["iso"]).toLocaleString();
 
         cy.get("[data-testid='timestamp-input']").should("exist").type(timestamps[inputFormat] as string);
         cy.get("[data-testid='output-utc-timezone']").should("have.value", timestamps["utc"]);
-        cy.get("[data-testid='output-local-timezone']").should("have.value", timestamps["local"]);
+        cy.get("[data-testid='output-local-timezone']").should("have.value", localDate);
         cy.get("[data-testid='output-iso-8601']").should("have.value", timestamps["iso"]);
         cy.get("[data-testid='output-unix-time']").should("have.value", timestamps["unix"]);
         cy.get("[data-testid='output-week-of-year']").should("have.value", timestamps["weekOfYear"]);
