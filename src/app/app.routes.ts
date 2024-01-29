@@ -25,6 +25,12 @@ export const routes: Routes = [
         title: "JSON Validator",
         loadComponent: () => import("./component/tools/json-validator/json-validator.component")
           .then(c => c.JsonValidatorComponent)
+      },
+      {
+        path: "time-converter",
+        title: "Time Converter",
+        loadComponent: () => import("./component/tools/time-converter/time-converter.component")
+          .then(c => c.TimeConverterComponent)
       }
     ]
   },

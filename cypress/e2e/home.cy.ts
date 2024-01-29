@@ -11,10 +11,14 @@ describe("Home page", () => {
     cy.get("app-footer").should("exist");
   });
 
-  it("should navigate to base64 encoder page when selected", () => {
+  it("should be able to navigate to all pages through the side navbar", () => {
     cy.visit("/");
-    cy.get("[data-testid='nav-item-base64-encoder']").should("exist").click().then(() => {
-      cy.location("pathname").should("eq", "/tools/base64-encoder");
+    cy.fixture("nav-list-items.json").then((navListItems: string[]) => {
+      navListItems.forEach((navListItem: string) => {
+        cy.get(`[data-testid='nav-item-${navListItem}']`).should("exist").click().then(() => {
+          cy.location("pathname").should("eq", `/tools/${navListItem}`);
+        });
+      });
     });
   });
 });

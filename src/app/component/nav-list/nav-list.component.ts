@@ -17,5 +17,6 @@ export class NavListComponent {
     {name: "Base64 Encoder", path: "base64-encoder"},
     {name: "Diff Viewer", path: "diff-viewer"},
     {name: "JSON Validator", path: "json-validator"},
+    {name: "Time Converter", path: "time-converter"},
   ];
 }
