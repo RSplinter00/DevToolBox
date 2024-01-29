@@ -25,6 +25,7 @@ describe("Time Converter Page", () => {
         cy.get("[data-testid='output-unix-time']").should("have.value", timestamps["unix"]);
         cy.get("[data-testid='output-week-of-year']").should("have.value", timestamps["weekOfYear"]);
         cy.get("[data-testid='output-day-of-week']").should("have.value", timestamps["dayOfWeek"]);
+        cy.get("[data-testid='other-formats-header']").should("exist");
         cy.get("[data-testid='output-yyyy-mm-dd']").should("have.value", timestamps["ymd1"]);
         cy.get("[data-testid='output-yyyy/mm/dd']").should("have.value", timestamps["ymd2"]);
         cy.get("[data-testid='output-mm-dd-yyyy']").should("have.value", timestamps["mdy1"]);
@@ -39,6 +40,7 @@ describe("Time Converter Page", () => {
       cy.get("[data-testid='input-format-select']").should("exist").click()
         .get(`[data-testid='option-${inputFormat}']`).click();
       cy.get("[data-testid='current-time-btn']").should("exist").click();
+      cy.get("[data-testid='other-formats-header']").should("exist");
       cy.get("[data-testid='timestamp-input']").should("exist").then((element: JQuery) => {
         expect(element.val()).to.match(inputFormats[inputFormat]);
       });
@@ -47,9 +49,12 @@ describe("Time Converter Page", () => {
 
   it("should clear the output when clear button is pressed", () => {
     cy.visit("/tools/time-converter");
+    cy.get("[data-testid='other-formats-header']").should("not.exist");
     cy.get("[data-testid='timestamp-input']").should("exist").type("1234567890");
+    cy.get("[data-testid='other-formats-header']").should("exist");
     cy.get("[data-testid='clear-btn']").should("exist").click();
     cy.get("[data-testid='output-utc-timezone']").should("be.empty");
+    cy.get("[data-testid='other-formats-header']").should("not.exist");
   });
 
   it("should clear form when switching between input values", () => {
@@ -58,12 +63,14 @@ describe("Time Converter Page", () => {
     cy.get("[data-testid='input-format-select']").should("exist").click()
       .get(`[data-testid='option-iso']`).click();
     cy.get("[data-testid='timestamp-input']").should("be.empty");
+    cy.get("[data-testid='other-formats-header']").should("not.exist");
   });
 
   it("should display 'Invalid Date' if an invalid date is entered", () => {
     cy.visit("/tools/time-converter");
     cy.get("[data-testid='timestamp-input']").should("exist").type("abc");
     cy.get("[data-testid='output-utc-timezone']").should("have.value", "Invalid Date");
+    cy.get("[data-testid='other-formats-header']").should("not.exist");
   });
 
   it("should copy value on copy button pressed", () => {

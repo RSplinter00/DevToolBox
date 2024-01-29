@@ -38,12 +38,14 @@ describe(TimeConverterComponent.name, () => {
     const buttons = header.querySelectorAll("button");
     const formatSelector = fixture.nativeElement.querySelector("mat-select");
     const input = fixture.nativeElement.querySelector("[data-testid='timestamp-input']");
+    const otherFormatsHeader = fixture.nativeElement.querySelector("[data-testid='other-formats-header']");
     expect(headerText).toEqual("Input:");
     expect(buttons).toHaveSize(2);
     expect(buttons[0].textContent).toEqual("Now");
     expect(buttons[1].textContent).toEqual("Clear");
     expect(formatSelector).toBeTruthy();
     expect(input).toBeTruthy();
+    expect(otherFormatsHeader).toBeFalsy();
   });
 
   it("should set timestamp in correct format when pressed on 'now' button with format epoch", () => {
@@ -51,8 +53,10 @@ describe(TimeConverterComponent.name, () => {
     currentTimeButton.click();
     fixture.detectChanges();
     const input = fixture.nativeElement.querySelector("[data-testid='timestamp-input']");
+    const otherFormatsHeader = fixture.nativeElement.querySelector("[data-testid='other-formats-header']");
     expect(input.value).toBeTruthy();
     expect(input.value).toMatch(/^\d{13}$/);
+    expect(otherFormatsHeader).toBeTruthy();
   });
 
   it("should set timestamp in correct format when pressed on 'now' button with format unix", () => {
@@ -61,8 +65,10 @@ describe(TimeConverterComponent.name, () => {
     currentTimeButton.click();
     fixture.detectChanges();
     const input = fixture.nativeElement.querySelector("[data-testid='timestamp-input']");
+    const otherFormatsHeader = fixture.nativeElement.querySelector("[data-testid='other-formats-header']");
     expect(input.value).toBeTruthy();
     expect(input.value).toMatch(/^\d{10}$/);
+    expect(otherFormatsHeader).toBeTruthy();
   });
 
   it("should set timestamp in correct format when pressed on 'now' button with format ISO 8601", () => {
@@ -71,8 +77,10 @@ describe(TimeConverterComponent.name, () => {
     currentTimeButton.click();
     fixture.detectChanges();
     const input = fixture.nativeElement.querySelector("[data-testid='timestamp-input']");
+    const otherFormatsHeader = fixture.nativeElement.querySelector("[data-testid='other-formats-header']");
     expect(input.value).toBeTruthy();
     expect(Date.parse(input.value)).not.toBeNaN();
+    expect(otherFormatsHeader).toBeTruthy();
   });
 
   Object.values(TimeConversionOptions).forEach((option: TimeConversionOptions) => {
@@ -96,8 +104,10 @@ describe(TimeConverterComponent.name, () => {
     const clearButton = fixture.nativeElement.querySelector("[data-testid='clear-btn']");
     clearButton.click();
     fixture.detectChanges();
+    const otherFormatsHeader = fixture.nativeElement.querySelector("[data-testid='other-formats-header']");
     expect(input.value).toBeFalsy();
     expect(component.timeConversionForm.get("utcTime")?.value).toBeFalsy();
+    expect(otherFormatsHeader).toBeFalsy()
   });
 
   it("should reset form if input format is changed", () => {
